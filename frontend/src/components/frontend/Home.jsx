@@ -1,15 +1,13 @@
 import Header from '../common/Header.jsx'
 import Footer from '../common/Footer.jsx'
+import AboutImg from '../../assets/images/aboutUs.jpg'
 import HeroVideo from '../../assets/images/hero.mp4';
-import AbouImg from '../../assets/images/aboutUs.jpg'
 import ServiceImg1 from '../../assets/images/service1.jpg'
 import ServiceImg2 from '../../assets/images/service2.jpg'
 import ServiceImg3 from '../../assets/images/service3.jpg'
-import ServiceImg4 from '../../assets/images/service4.jpg'
 import ProjectImg1 from '../../assets/images/project1.jpg'
 import ProjectImg2 from '../../assets/images/project2.jpg'
 import ProjectImg3 from '../../assets/images/project3.jpg'
-import ProjectImg4 from '../../assets/images/project4.jpg'
 import Icon1 from '../../assets/images/icon1.svg'
 import Icon2 from '../../assets/images/icon2.svg'
 import AvatarImg1 from '../../assets/images/avatar1.jpg'
@@ -31,7 +29,6 @@ const Home = () => {
       </svg>
   return (
     <>
-   <Header />
     <main>
         {/* Hero section */}
         <section className="section-1">
@@ -42,12 +39,13 @@ const Home = () => {
                             <source src={HeroVideo} type='video/mp4' />
                         </video>
                     </div>
+                    <div className="overlay"></div>
                     <div className="text-center">
                         <span>Bienvenue chez Constructo</span>
                         <h1>Concrétiser vos rêves avec <br/> précision et excellence</h1>
                         <p>Nous excellons dans la transformation des visions en réalité grâce à un artisanat exceptionnel et une attention <br/> méticuleuse. Avec des années d'expérience et un engagement envers la qualité</p>
-                        <div className="my-5">
-                                <a className='btn btn-primary large me-4'>Contactez Nous</a>
+                        <div className=" hero-btn mx-auto w-50 d-flex justify-content-evenly py-3">
+                                <a className='btn btn-primary large'>Contactez Nous</a>
                                 <a className='btn btn-secondary large'>Voir Projets</a>
                         </div>
                     </div>
@@ -56,30 +54,30 @@ const Home = () => {
         </section>
         {/* About us section */}
         <section className="section-2">
-            <div className="container py-5">
-                <div className="row">
-                    <div className="col-md-6">
-                        <img src={AbouImg} className='w-100'/>
-                    </div>
-                    <div className="col-md-6">
-                        <span>À propos de nous</span>
-                        <h2>Concevoir des structures qui durent toute une vie</h2>
-                        <p>Construire des structures durables nécessite une approche globale qui combine matériaux avancés, conception résiliente, entretien régulier et pratiques durables. En s'appuyant sur des connaissances historiques et en utilisant la technologie moderne.</p>
-                        <p>La conception de structures qui résistent à l'épreuve du temps implique un mélange harmonieux de matériaux de pointe, de conceptions durables, d'entretien continu et de pratiques écologiques.</p>
-                    </div>
+        <div className="container py-5">
+            <div className="row">
+                <div className="col-md-6 d-flex align-items-center">
+                    <img src={AboutImg} className='w-100'/>
+                </div>
+                <div className="col-md-6 p-3">
+                    <span>À propos de nous</span>
+                    <h2>Des structures durables</h2>
+                    <p>Construire des structures durables nécessite une approche globale qui combine matériaux avancés, conception résiliente, entretien régulier et pratiques durables. En s'appuyant sur des connaissances historiques et en utilisant la technologie moderne.</p>
+                    <p>La conception de structures qui résistent à l'épreuve du temps implique un mélange harmonieux de matériaux de pointe, de conceptions durables, d'entretien continu et de pratiques écologiques.</p>
                 </div>
             </div>
+        </div>
         </section>
         {/* Our Services */}
         <section className="section-3 bg-light">
-            <div className="container-fluid py-4">
+            <div className="container">
                 <div className="section-header text-center">
                     <span>Nos Services</span>
                     <h2>Nos services de construction</h2>
                     <p>Nous offrons une gamme diversifiée de services de construction, couvrant les projets résidentiels, commerciaux et industriels.</p>
                 </div>
                 <div className="row pt-4">
-                    <div className="col-md-3 col-lg-3">
+                    <div className="col-12 col-md-6 col-xl-4">
                         <div className="item">
                             <div className="service-image">
                                 <img src={ServiceImg1} className='w-100' />
@@ -96,7 +94,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3 col-lg-3">
+                    <div className="col-12 col-md-6 col-xl-4">
                         <div className="item">
                             <div className="service-image">
                                 <img src={ServiceImg2} className='w-100' />
@@ -112,7 +110,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3 col-lg-3">
+                    <div className="col-12 col-md-6 col-xl-4">
                         <div className="item">
                             <div className="service-image">
                                 <img src={ServiceImg3} className='w-100' />
@@ -129,24 +127,6 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3 col-lg-3">
-                        <div className="item">
-                            <div className="service-image">
-                                <img src={ServiceImg4} className='w-100' />
-                            </div>
-                            <div className="service-body">
-                                <div className="service-title">
-                                <h3>Construction Corporative</h3>
-                            </div>
-                            <div className="service-content">
-                                <p>La construction corporative concerne les projets de bureaux et de sièges sociaux. Nous créons des espaces de travail modernes et fonctionnels, en mettant l'accent sur l'efficacité et le design esthétique.
-                                </p>
-                            </div>
-                            <a href="" className="btn btn-primary small">Lire Plus</a>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -156,7 +136,7 @@ const Home = () => {
                 <div className="section-header text-center">
                     <span>Pourquoi nous choisir</span>
                     <h2>Notre engagement envers l'excellence</h2>
-                    <p>Grâce à notre collaboration étroite avec les clients et les partenaires, nous mettons à profit notre expertise industrielle,<br/> nos décennies d'expérience et notre capacité d'innovation pour offrir <br/> des solutions personnalisées, sûres et durables.</p>
+                    <p>Grâce à notre collaboration étroite avec les clients et les partenaires, nous mettons à profit notre expertise industrielle.</p>
                 </div>
                 <div className="row py-4">
                     <div className="col-md-4">
@@ -178,7 +158,7 @@ const Home = () => {
                             <div className="card-title mt-3">
                             <h3>Stratégies Innovantes</h3>
                             </div>
-                            <p>Chaque détail compte. Notre équipe met en avant des stratégies innovantes qui améliorent l'efficacité et la sécurité sur le chantier. Cet engagement garantit que chaque projet est achevé selon les normes les plus élevées, dépassant les attentes des clients.</p>
+                            <p>Chaque détail compte. Notre équipe met en avant des stratégies innovantes qui améliorent l'efficacité et la sécurité sur le chantier. Cet engagement garantit que chaque projet est achevé selon les normes les plus élevées.</p>
                         </div>
                     </div>
                     <div className="col-md-4">
@@ -189,80 +169,64 @@ const Home = () => {
                             <div className="card-title mt-3">
                                 <h3>Engagement Qualité</h3>
                             </div>
-                            <p>L'excellence à chaque étape. Nous privilégions la qualité dans tous nos processus, de la planification à l'exécution. Cette approche garantit que nos projets surpassent les normes rigoureuses de l'industrie et les exigences des clients.</p>
+                            <p>L'excellence à chaque étape. Nous privilégions la qualité dans tous nos processus, de la planification à l'exécution. Cette approche garantit que nos projets surpassent les normes rigoureuses de l'industrie.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         {/* Our Project */}
-        <section className="section-3  bg-light">
-            <div className="container-fluid py-4">
+        <section className="section-5  bg-light">
+            <div className="container">
                 <div className="section-header text-center">
                     <span>Nos Projets</span>
                     <h2>Notre Large Gamme de Projets</h2>
                     <p>Nous offrons une gamme complète de services de construction, couvrant les projets résidentiels, commerciaux et industriels.</p>
                 </div>
                 <div className="row pt-4">
-                    <div className="col-md-3 col-lg-3">
+                    <div className="col-12 col-md-6 col-xl-4">
                         <div className="item">
-                            <div className="service-image">
+                            <div className="project-image">
                                 <img src={ProjectImg1} className='w-100' />
                             </div>
-                            <div className="service-body">
-                                <div className="service-title">
+                            <div className="project-body">
+                                <div className="project-title">
                                 <h3>Projet de Casablanca</h3>
                                 </div>
-                                <div className="service-content">
+                                <div className="project-content">
                                     <p>Le projet de Casablanca vise à moderniser le quartier des affaires avec des bureaux et commerces, reflétant l'essor économique de la ville et créant des espaces adaptés aux entreprises innovantes et start-ups.</p>
                                 </div>
                                 <a href="" className="btn btn-primary small">Lire plus</a>
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3 col-lg-3">
+                    <div className="col-12 col-md-6 col-xl-4">
                         <div className="item">
-                            <div className="service-image">
+                            <div className="project-image">
                                 <img src={ProjectImg2} className='w-100' />
                             </div>
-                            <div className="service-body">
-                                <div className="service-title">
+                            <div className="project-body">
+                                <div className="project-title">
                                 <h3>Projet de Marrakech</h3>
                                 </div>
-                                <div className="service-content">
+                                <div className="project-content">
                                     <p>Le projet de Marrakech se concentre sur la création d'un complexe touristique intégrant des hôtels, des restaurants, et des espaces culturels, en harmonie avec le patrimoine historique et l'attrait touristique de la ville.</p>
                                 </div>
                                 <a href="" className="btn btn-primary small">Lire plus</a>
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3 col-lg-3">
+                    <div className="col-12 col-md-6 col-xl-4">
                         <div className="item">
-                            <div className="service-image">
+                            <div className="project-image">
                                 <img src={ProjectImg3} className='w-100' />
                             </div>
-                            <div className="service-body">
-                                <div className="service-title">
+                            <div className="project-body">
+                                <div className="project-title">
                                 <h3>Projet de Fès</h3>
                             </div>
-                            <div className="service-content">
+                            <div className="project-content">
                                 <p>Le projet de Fès inclut la rénovation et préservation des bâtiments historiques dans la médina, valorisant le patrimoine culturel et encourageant le tourisme durable dans cette ville millénaire et fascinante.</p>
-                            </div>
-                                <a href="" className="btn btn-primary small">Lire plus</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-lg-3">
-                        <div className="item">
-                            <div className="service-image">
-                                <img src={ProjectImg4} className='w-100' />
-                            </div>
-                            <div className="service-body">
-                                <div className="service-title">
-                                <h3>Projet de Tanger</h3>
-                            </div>
-                            <div className="service-content">
-                                <p>Le projet de Tanger développe une zone industrielle moderne, attirant de nouvelles entreprises et créant des emplois, tout en profitant de la position stratégique et économique de la ville pour sa croissance.</p>
                             </div>
                                 <a href="" className="btn btn-primary small">Lire plus</a>
                             </div>
@@ -272,12 +236,12 @@ const Home = () => {
             </div>
         </section>
         {/* Testimonials */}
-        <section className="section-5">
+        <section className="section-6">
             <div className="container py-5">
                 <div className="section-header text-center">
                     <span>Témoignages</span>
                     <h2>Ce que disent nos clients</h2>
-                    <p>Grâce à notre expertise et notre dévouement, nous avons réalisé avec succès de nombreux projets résidentiels, commerciaux et industriels, toujours avec une satisfaction client inégalée.</p>
+                    <p>Grâce à notre expertise et notre dévouement, nous avons réalisé avec succès de nombreux projets toujours avec une satisfaction client inégalée.</p>
                 </div>
                 <Swiper
                     modules={[Pagination]}
@@ -412,14 +376,13 @@ const Home = () => {
                 </Swiper>
             </div>
         </section>
-
         {/* Blog */}
-        <section className="section section-6 bg-light py-5">
+        <section className="section section-7 bg-light py-5">
             <div className="container">
                 <div className="section-header text-center">
                     <span>Blog & Nouvelles</span>
                     <h2>Nos Articles de Blog</h2>
-                    <p>Découvrez les dernières tendances, innovations et avis d'experts dans le secteur de la construction. Notre blog couvre des sujets allant des pratiques de construction durables aux technologies de pointe.</p>
+                    <p>Notre blog couvre des sujets allant des pratiques de construction durables aux technologies de pointe.</p>
                 </div>
                 <div className="row pt-3">
                     <div className="col-md-4">
@@ -465,7 +428,6 @@ const Home = () => {
             </div>
         </section>
     </main>
-    <Footer />
     </>
   )
 }
