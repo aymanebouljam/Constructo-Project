@@ -5,6 +5,7 @@ import Sidebar from '../common/Sidebar.jsx'
 function Dashboard() {
   return (
     <>
+        <Header />
         <main>
             <div className="container my-5">
                 <div className="row">
@@ -21,6 +22,7 @@ function Dashboard() {
                 </div>
             </div>
         </main>
+        <Footer />
     </>
   )
 }
