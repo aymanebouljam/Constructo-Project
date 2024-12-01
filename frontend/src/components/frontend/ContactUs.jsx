@@ -4,6 +4,7 @@ import Footer from "../common/Footer"
 function ContactUS() {
   return (
     <>
+        <Header/>
           {/* Hero Section */}
           <section className="section-17">
                 <div className="hero d-flex align-items-center">
@@ -75,6 +76,7 @@ function ContactUS() {
                         </div>
                     </div>
                 </section>
+                <Footer />
     </>
   )
 }

@@ -6,7 +6,7 @@ function Footer() {
               <div className="row">
                   <div className="col-12 col-sm-6 col-lg-3 ">
                       <h3 className='mb-4'>Constructo</h3>
-                      <div className='text-center fs-6'> ”Nos services de construction vous offrent la tranquillité d'esdivrit même après la fin des travaux.“
+                      <div className='fs-6'> ”Nos services de construction vous offrent la tranquillité d'esprit même après la fin des travaux.“
                       </div>
                   </div>
                   <div className=" col-12 col-sm-6 col-lg-3 ">
