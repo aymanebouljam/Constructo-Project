@@ -10,6 +10,7 @@ import ProjectImg6 from '../../assets/images/project6.jpg'
 function Projects() {
   return (
     <>
+        <Header/>
         <main>
             {/* Hero Section */}
             <section className="section-13">
@@ -135,6 +136,7 @@ function Projects() {
                 </div>
             </section>
         </main>
+        <Footer/>
     </>
   )
 }

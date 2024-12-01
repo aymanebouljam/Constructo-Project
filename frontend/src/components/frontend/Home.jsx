@@ -29,6 +29,7 @@ const Home = () => {
       </svg>
   return (
     <>
+    <Header/>
     <main>
         {/* Hero section */}
         <section className="section-1">
@@ -70,7 +71,7 @@ const Home = () => {
         </section>
         {/* Our Services */}
         <section className="section-3 bg-light">
-            <div className="container">
+            <div className="container py-5">
                 <div className="section-header text-center">
                     <span>Nos Services</span>
                     <h2>Nos services de construction</h2>
@@ -177,7 +178,7 @@ const Home = () => {
         </section>
         {/* Our Project */}
         <section className="section-5  bg-light">
-            <div className="container">
+            <div className="container py-5">
                 <div className="section-header text-center">
                     <span>Nos Projets</span>
                     <h2>Notre Large Gamme de Projets</h2>
@@ -428,6 +429,7 @@ const Home = () => {
             </div>
         </section>
     </main>
+    <Footer/>
     </>
   )
 }
