@@ -1,6 +1,6 @@
 //Global Colors
-$primary-color : #fe538d;
-$secondary-color : #ffb703;
+$primary-color : #ffb703;
+$secondary-color : #b95e3a;
 $text-color : #000;
 $text-white : #fff;
 $dark-background : #000000;
@@ -63,14 +63,14 @@ ul{
     }
 }
 .btn-secondary{
-    background-color: $secondary-color;
-    border : 1px solid $secondary-color;
+    background-color: $primary-color;
+    border : 1px solid $primary-color;
     text-transform: uppercase;
     font-size: 1em;
     font-weight: 500;
     &:hover{
-        background-color: $primary-color;
-        border : 1px solid $primary-color;
+        background-color: $secondary-color;
+        border : 1px solid $secondary-color;
     }
 }
 .section-header{
@@ -220,7 +220,7 @@ footer{
         }
 
         span {
-            color: $secondary-color; 
+            color: $primary-color; 
             font-size: 2em; 
             font-weight: 700; 
             display: block;
