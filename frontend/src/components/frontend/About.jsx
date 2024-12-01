@@ -10,6 +10,7 @@ function About() {
   </svg>;
   return (
     <>
+        <Header/>
         <main>
             {/* hero section */}
             <section className="section-8">
@@ -100,6 +101,7 @@ function About() {
                 </div>
             </section>
         </main>
+        <Footer/>
     </>
     
   )

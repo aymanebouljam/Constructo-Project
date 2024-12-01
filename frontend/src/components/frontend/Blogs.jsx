@@ -10,6 +10,7 @@ import BlogImg6 from '../../assets/images/blog6.jpg'
 function Blogs() {
   return (
     <>
+        <Header />
         <main>
                {/* Hero Section */}
                <section className="section-15">
@@ -115,6 +116,7 @@ function Blogs() {
                 </div>
             </section>
         </main>
+        <Footer/>
     </>
   )
 }

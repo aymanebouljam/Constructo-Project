@@ -10,6 +10,7 @@ import ServiceImg6 from '../../assets/images/service6.jpg'
 function Services() {
   return (
     <>
+        <Header/>
         <main>
             {/* Hero Section */}
             <section className="section-11">
@@ -136,6 +137,7 @@ function Services() {
                 </div>
             </section>
         </main>
+        <Footer/>
     </>
     
   )
