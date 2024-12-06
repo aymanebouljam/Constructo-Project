@@ -1,6 +1,6 @@
 //Global Colors
-$primary-color : #ffb703;
-$secondary-color : #b10000;
+$primary-color : #FFA500;
+$secondary-color : #CB4154;
 $text-color : #000;
 $text-white : #fff;
 $dark-background : #000000;
@@ -62,16 +62,55 @@ ul{
         border : 1px solid $secondary-color;
     }
 }
+/* Hover state */
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.btn-primary:focus:active,
+.btn-primary:hover:active,
+.btn-primary:focus {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+    box-shadow: none; 
+}
+
+/* For disabled state */
+.btn-primary:disabled {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+}
+
 .btn-secondary{
-    background-color: $primary-color;
-    border : 1px solid $primary-color;
+    background-color: $secondary-color;
+    border : 1px solid $secondary-color;
     text-transform: uppercase;
     font-size: 1em;
     font-weight: 500;
     &:hover{
-        background-color: $secondary-color;
-        border : 1px solid $secondary-color;
+        background-color: $primary-color;
+        border : 1px solid $primary-color;
     }
+}
+/* Hover state */
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.btn-secondary:active:focus,
+.btn-secondary:active:hover,
+.btn-secondary:focus:active,
+.btn-secondary:hover:active,
+.btn-secondary:focus {
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+    box-shadow: none; 
+}
+
+/* For disabled state */
+.btn-secondary:disabled {
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
 }
 .section-header{
     span{
@@ -124,6 +163,11 @@ footer{
         font-size: 1.1em;
         text-align: center;
     }
+    .socials{
+        display: flex;
+        gap:2rem;
+        margin-bottom: 20px;
+    }
 }
 //Media Queries
 @media only screen and (max-width : 576px){
@@ -172,8 +216,14 @@ footer{
         font-size: .875rem; 
         line-height: 1.5;
         border-radius: .2rem  ;
+    }
+    footer{
+        .socials{
+            justify-content: center;
+        }
+    }
 }
-}
+
 //Home
 .section-1 {
     .hero {
@@ -663,5 +713,23 @@ footer{
                 border-bottom: 1px solid rgba(0, 0, 0, 0.20);
             }
         }
+    }
+}
+//  Service Details
+
+.section-19{
+       .sidebar{
+        border-radius: 40px;
+       }    
+}
+.section-20{
+    .text-justify{
+        text-align: justify;
+    }
+    img{
+        width:80%;
+        height: 500px;
+        object-fit: cover;
+        object-position: center;
     }
 }

@@ -1,29 +1,27 @@
-    import Header from '../common/Header.jsx'
-    import Footer from '../common/Footer.jsx'
-    import AboutImg from '../../assets/images/aboutUs.jpg'
-    import HeroVideo from '../../assets/images/hero.mp4';
-    import ServiceImg1 from '../../assets/images/service1.jpg'
-    import ServiceImg2 from '../../assets/images/service2.jpg'
-    import ServiceImg3 from '../../assets/images/service3.jpg'
-    import ProjectImg1 from '../../assets/images/project1.jpg'
-    import ProjectImg2 from '../../assets/images/project2.jpg'
-    import ProjectImg3 from '../../assets/images/project3.jpg'
-    import Icon1 from '../../assets/images/icon1.svg'
-    import Icon2 from '../../assets/images/icon2.svg'
-    import AvatarImg1 from '../../assets/images/avatar1.jpg'
-    import AvatarImg2 from '../../assets/images/avatar2.jpg'
-    import AvatarImg3 from '../../assets/images/avatar3.jpg'
-    import AvatarImg4 from '../../assets/images/avatar4.jpg'
-    import AvatarImg5 from '../../assets/images/avatar5.jpg'
-    import AvatarImg6 from '../../assets/images/avatar6.jpg'
-    import BlogImg1 from '../../assets/images/blog1.jpg'
-    import BlogImg2 from '../../assets/images/blog2.jpg'
-    import BlogImg3 from '../../assets/images/blog3.jpg'
-    import {Swiper, SwiperSlide} from 'swiper/react'
-    import { Pagination} from 'swiper/modules';
-    import 'swiper/css';
-    import 'swiper/css/pagination';
+import Header from '../common/Header.jsx'
+import Footer from '../common/Footer.jsx'
+import AboutImg from '../../assets/images/aboutUs.jpg'
+import HeroVideo from '../../assets/images/hero.mp4';
+import ProjectImg1 from '../../assets/images/project1.jpg'
+import ProjectImg2 from '../../assets/images/project2.jpg'
+import ProjectImg3 from '../../assets/images/project3.jpg'
+import Icon1 from '../../assets/images/icon1.svg'
+import Icon2 from '../../assets/images/icon2.svg'
+import AvatarImg1 from '../../assets/images/avatar1.jpg'
+import AvatarImg2 from '../../assets/images/avatar2.jpg'
+import AvatarImg3 from '../../assets/images/avatar3.jpg'
+import AvatarImg4 from '../../assets/images/avatar4.jpg'
+import AvatarImg5 from '../../assets/images/avatar5.jpg'
+import AvatarImg6 from '../../assets/images/avatar6.jpg'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import { Pagination} from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { useState, useEffect } from 'react';
+import LatestServices from '../common/LatestServices.jsx';
+
     const Home = () => {
+      
         const star = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
         </svg>
@@ -70,67 +68,7 @@
             </div>
             </section>
             {/* Our Services */}
-            <section className="section-3 bg-light">
-                <div className="container py-5">
-                    <div className="section-header text-center">
-                        <span>Nos Services</span>
-                        <h2>Nos services de construction</h2>
-                        <p>Nous offrons une gamme diversifiée de services de construction, couvrant les projets résidentiels, commerciaux et industriels.</p>
-                    </div>
-                    <div className="row pt-4">
-                        <div className="col-12 col-md-6 col-xl-4">
-                            <div className="item">
-                                <div className="service-image">
-                                    <img src={ServiceImg1} className='w-100' />
-                                </div>
-                                <div className="service-body">
-                                    <div className="service-title">
-                                    <h3>Construction Spécialisée</h3>
-                                    </div>
-                                    <div className="service-content">
-                                        <p>La construction spécialisée est un secteur de niche au sein de l'industrie de la construction, axé sur les projets nécessitant des compétences, des matériaux, des techniques et des processus spécialisés et innovants.
-                                        </p>
-                                    </div>
-                                    <a href="" className="btn btn-primary small">Lire Plus</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-xl-4">
-                            <div className="item">
-                                <div className="service-image">
-                                    <img src={ServiceImg2} className='w-100' />
-                                </div>
-                                <div className="service-body">
-                                    <div className="service-title">
-                                    <h3>Construction Civile</h3>
-                                    </div>
-                                    <div className="service-content">
-                                        <p>La construction civile englobe des projets d'infrastructure tels que les routes, ponts, tunnels et systèmes d'eau. Nous utilisons des techniques avancées pour garantir la sécurité et la durabilité de ces structures essentielles.</p>
-                                    </div>
-                                    <a href="" className="btn btn-primary small">Lire Plus</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-xl-4">
-                            <div className="item">
-                                <div className="service-image">
-                                    <img src={ServiceImg3} className='w-100' />
-                                </div>
-                                <div className="service-body">
-                                    <div className="service-title">
-                                    <h3>Construction Résidentielle</h3>
-                                    </div>
-                                    <div className="service-content">
-                                        <p>La construction résidentielle se concentre sur la création de maisons et d'immeubles d'habitation, créant des espaces de vie confortables, durables, utilisant des matériaux de haute qualité et innovantes.
-                                        </p>
-                                    </div>
-                                    <a href="" className="btn btn-primary small">Lire Plus</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <LatestServices/>
             {/* Why choose us */}
             <section className="section-4 ">
                 <div className="container py-5">
@@ -140,7 +78,7 @@
                         <p>Grâce à notre collaboration étroite avec les clients et les partenaires, nous mettons à profit notre expertise industrielle.</p>
                     </div>
                     <div className="row py-4">
-                        <div className="col-md-4">
+                        <div className="col-md-6 col-xl-4">
                             <div className="card shadow border-0 p-4">
                                 <div className="card-icon">
                                     <img src={Icon1} className='w-25'/>
@@ -151,7 +89,7 @@
                                 <p>Les petites actions créent de grands impacts. Tout commence et se termine avec chaque employé s'engageant à adopter des pratiques de travail plus sûres quotidiennement, garantissant ainsi leur retour chez eux en sécurité.</p>
                             </div>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-6 col-xl-4">
                             <div className="card shadow border-0 p-4">
                                 <div className="card-icon">
                                     <img src={Icon2} className='w-25'/>
@@ -162,7 +100,7 @@
                                 <p>Chaque détail compte. Notre équipe met en avant des stratégies innovantes qui améliorent l'efficacité et la sécurité sur le chantier. Cet engagement garantit que chaque projet est achevé selon les normes les plus élevées.</p>
                             </div>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-6 col-xl-4">
                             <div className="card shadow border-0 p-4">
                                 <div className="card-icon">
                                     <img src={Icon2} className='w-25'/>
@@ -245,15 +183,24 @@
                         <p>Grâce à notre expertise et notre dévouement, nous avons réalisé avec succès de nombreux projets toujours avec une satisfaction client inégalée.</p>
                     </div>
                     <Swiper
-                        modules={[Pagination]}
-                        spaceBetween={30}
-                        breakpoints={{
-                            640: { slidesPerView: 1, spaceBetween: 20 },
-                            768: { slidesPerView: 2, spaceBetween: 40 },
-                            1024: { slidesPerView: 3, spaceBetween: 50 },
-                        }}
-                        pagination={{ clickable: true }}
-                    >
+                                modules={[Pagination]}
+                                spaceBetween={30}
+                                breakpoints={{
+                                    // Extra small devices (phones, less than 768px)
+                                    0: { slidesPerView: 1, spaceBetween: 20 },
+                                    
+                                    // Medium devices (tablets, 768px and up)
+                                    768: { slidesPerView: 1, spaceBetween: 40 },
+
+                                    // Large devices (desktops, 992px and up, if needed)
+                                    992: { slidesPerView: 2, spaceBetween: 50 },
+
+                                    // Extra large devices (large desktops, 1200px and up)
+                                    1200: { slidesPerView: 2, spaceBetween: 50 },
+                                    1250: { slidesPerView: 3, spaceBetween: 50 },
+                                }}
+                                pagination={{ clickable: true }}
+                            >
                         <SwiperSlide>
                             <div className="card shadow border-0">
                                 <div className="card-body p-4">
@@ -375,57 +322,6 @@
                             </div>
                         </SwiperSlide>
                     </Swiper>
-                </div>
-            </section>
-            {/* Blog */}
-            <section className="section section-7 bg-light py-5">
-                <div className="container">
-                    <div className="section-header text-center">
-                        <span>Blog & Nouvelles</span>
-                        <h2>Nos Articles de Blog</h2>
-                        <p>Notre blog couvre des sujets allant des pratiques de construction durables aux technologies de pointe.</p>
-                    </div>
-                    <div className="row pt-3">
-                        <div className="col-md-4">
-                            <div className="card shadow border-0">
-                                <div className="card-img-top">
-                                    <img src={BlogImg1} className='w-100'/>
-                                </div>
-                                <div className="card-body p-4">
-                                    <div className='mb-3'>
-                                        <a href='#' className='title'>Sécurité et Régulations</a>
-                                    </div>
-                                        <a href='#' className='btn btn-primary small'>Lire plus</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card shadow border-0">
-                                <div className="card-img-top">
-                                    <img src={BlogImg2} className='w-100'/>
-                                </div>
-                                <div className="card-body p-4">
-                                    <div className='mb-3'>
-                                        <a href='#' className='title'>Construire Écologique</a>
-                                    </div>
-                                        <a href='#' className='btn btn-primary small'>Lire plus</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card shadow border-0">
-                                <div className="card-img-top">
-                                    <img src={BlogImg3} className='w-100'/>
-                                </div>
-                                <div className="card-body p-4">
-                                    <div className='mb-3'>
-                                        <a href='#' className='title'>Tech de Chantier</a>
-                                    </div>
-                                        <a href='#' className='btn btn-primary small'>Lire plus</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
         </main>

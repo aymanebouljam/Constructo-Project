@@ -33,7 +33,6 @@ function Login() {
                 id : result.id,
                 token : result.token
             }
-            console.log(userInfo)
             localStorage.setItem('userInfo', JSON.stringify(userInfo))
             login(userInfo)
             navigate('/admin/dashboard')
