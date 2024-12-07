@@ -19,6 +19,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { useState, useEffect } from 'react';
 import LatestServices from '../common/LatestServices.jsx';
+import LatestProjects from '../common/LatestProjects.jsx';
 
     const Home = () => {
       
@@ -115,65 +116,7 @@ import LatestServices from '../common/LatestServices.jsx';
                 </div>
             </section>
             {/* Our Project */}
-            <section className="section-5  bg-light">
-                <div className="container py-5">
-                    <div className="section-header text-center">
-                        <span>Nos Projets</span>
-                        <h2>Notre Large Gamme de Projets</h2>
-                        <p>Nous offrons une gamme complète de services de construction, couvrant les projets résidentiels, commerciaux et industriels.</p>
-                    </div>
-                    <div className="row pt-4">
-                        <div className="col-12 col-md-6 col-xl-4">
-                            <div className="item">
-                                <div className="project-image">
-                                    <img src={ProjectImg1} className='w-100' />
-                                </div>
-                                <div className="project-body">
-                                    <div className="project-title">
-                                    <h3>Projet de Casablanca</h3>
-                                    </div>
-                                    <div className="project-content">
-                                        <p>Le projet de Casablanca vise à moderniser le quartier des affaires avec des bureaux et commerces, reflétant l'essor économique de la ville et créant des espaces adaptés aux entreprises innovantes et start-ups.</p>
-                                    </div>
-                                    <a href="" className="btn btn-primary small">Lire plus</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-xl-4">
-                            <div className="item">
-                                <div className="project-image">
-                                    <img src={ProjectImg2} className='w-100' />
-                                </div>
-                                <div className="project-body">
-                                    <div className="project-title">
-                                    <h3>Projet de Marrakech</h3>
-                                    </div>
-                                    <div className="project-content">
-                                        <p>Le projet de Marrakech se concentre sur la création d'un complexe touristique intégrant des hôtels, des restaurants, et des espaces culturels, en harmonie avec le patrimoine historique et l'attrait touristique de la ville.</p>
-                                    </div>
-                                    <a href="" className="btn btn-primary small">Lire plus</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-xl-4">
-                            <div className="item">
-                                <div className="project-image">
-                                    <img src={ProjectImg3} className='w-100' />
-                                </div>
-                                <div className="project-body">
-                                    <div className="project-title">
-                                    <h3>Projet de Fès</h3>
-                                </div>
-                                <div className="project-content">
-                                    <p>Le projet de Fès inclut la rénovation et préservation des bâtiments historiques dans la médina, valorisant le patrimoine culturel et encourageant le tourisme durable dans cette ville millénaire et fascinante.</p>
-                                </div>
-                                    <a href="" className="btn btn-primary small">Lire plus</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <LatestProjects/>
             {/* Testimonials */}
             <section className="section-6">
                 <div className="container py-5">

@@ -637,37 +637,7 @@ footer{
     }
 }
 //Blog
-.section-15{
-    .hero {
-        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/blogs-hero.jpg');
-        background-size: cover;
-        background-position: center 40%;
-        color: $text-white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        min-height: 500px;
-        span {
-            color: $primary-color;
-            font-size: 1.5em;
-            font-weight: 500;
-        }
-    }
-}
-.section-16{
-    .card{
-        border-radius: 40px;
-        margin-bottom: 20px;
-        img{
-            border-top-right-radius: 40px;
-            border-top-left-radius: 40px;
-            height: 300px ;
-        }
-        .card-body{
-            a.title{
-                font-size: 1.4em;
-            }
-        }
-    }
-}
+
 //Contact Us
 .section-17{
     .hero {

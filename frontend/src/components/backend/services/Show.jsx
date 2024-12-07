@@ -68,8 +68,8 @@ const Show = ()=>{
                                         <tr>
                                             <th>ID</th>
                                             <th>Titre</th>
-                                            <th>Slug</th>
-                                            <th>Status</th>
+                                            <th>Référence</th>
+                                            <th>Statut</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>

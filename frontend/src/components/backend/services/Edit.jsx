@@ -135,12 +135,12 @@ const Edit = ({placeholder})=>{
                                             }
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="slug" className='form-label'>Slug</label>
+                                            <label htmlFor="slug" className='form-label'>Référence</label>
                                             <input
                                                 {...register('slug', {
-                                                    required: "Le slug est obligatoire"
+                                                    required: "La référence est requise"
                                                 })}
-                                                type='text' className={`form-control ${errors.slug && 'is-invalid'}`} placeholder='Slug' />
+                                                type='text' className={`form-control ${errors.slug && 'is-invalid'}`} placeholder='Référence' />
                                             {
                                                 errors.slug && <p className='invalid-feedback'>{errors.slug?.message}</p>
                                             }

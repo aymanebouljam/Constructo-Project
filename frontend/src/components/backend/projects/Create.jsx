@@ -5,11 +5,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { apiUrl, token } from '../../common/http.jsx'
 import { toast } from 'react-toastify'
-import { Placeholder } from 'react-bootstrap'
 import React, { useState, useRef, useMemo } from 'react';
 import JoditEditor from 'jodit-react';
 
-const Create = ({ placeholder }) => {
+const CreateProject = ({ placeholder }) => {
     const editor = useRef(null);
     const [content, setContent] = useState('');
     const [isDisable, setIsDisable] = useState(false);
@@ -17,7 +16,7 @@ const Create = ({ placeholder }) => {
 
     const config = useMemo(() => ({
         readonly: false,
-        placeholder: placeholder || 'Contenu'
+        placeholder: placeholder || 'Content'
     }), [placeholder]);
 
     const {
@@ -29,16 +28,14 @@ const Create = ({ placeholder }) => {
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        // Include the imageId in the data sent to the API
         const newData = { ...data, "content": content, "image": imageId };
 
-        // Prevent submission if no image is uploaded
         if (!imageId) {
-            toast.error("Veuillez télécharger une image avant de soumettre le formulaire");
+            toast.error("Please upload an image before submitting the form");
             return;
         }
 
-        const res = await fetch(apiUrl + 'services', {
+        const res = await fetch(apiUrl + 'projects', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -51,7 +48,7 @@ const Create = ({ placeholder }) => {
         const result = await res.json();
         if (result.status === true) {
             toast.success(result.message);
-            navigate('/admin/services');
+            navigate('/admin/projects');
         } else {
             toast.error(result.message);
         }
@@ -87,22 +84,22 @@ const Create = ({ placeholder }) => {
                 <div className="container my-5">
                     <div className="row">
                         <div className="col-md-3">
-                            {<Sidebar />}
+                            <Sidebar />
                         </div>
                         <div className="col-md-9">
                             <div className="card shadow border-0">
                                 <div className="card-body p-4">
                                     <div className="d-flex justify-content-between">
-                                        <h4 className='h5'>Services / Créer</h4>
-                                        <Link to="/admin/services" className="btn btn-primary">Retourner</Link>
+                                        <h4 className='h5'>Projets / Créer</h4>
+                                        <Link to="/admin/projects" className="btn btn-primary">Retourner</Link>
                                     </div>
                                     <hr />
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="mb-3">
-                                            <label htmlFor="name" className='form-label'>Titre</label>
+                                            <label htmlFor="title" className='form-label'>Titre</label>
                                             <input
                                                 {...register('title', {
-                                                    required: "Le titre est obligatoire"
+                                                    required: "Title is required"
                                                 })}
                                                 type='text' className={`form-control ${errors.title && 'is-invalid'}`} placeholder='Titre' />
                                             {
@@ -110,15 +107,46 @@ const Create = ({ placeholder }) => {
                                             }
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="slug" className='form-label'>Slug</label>
-                                            <input
-                                                {...register('slug', {
-                                                    required: "Le slug est obligatoire"
-                                                })}
-                                                type='text' className={`form-control ${errors.slug && 'is-invalid'}`} placeholder='Référence' />
-                                            {
-                                                errors.slug && <p className='invalid-feedback'>{errors.slug?.message}</p>
-                                            }
+                                                <label htmlFor="slug" className='form-label'>Référence</label>
+                                                <input
+                                                    {...register('slug', {
+                                                        required: "La Référence est requise"
+                                                    })}
+                                                    type='text' className={`form-control ${errors.slug && 'is-invalid'}`} placeholder='Référence' />
+                                                {
+                                                    errors.slug && <p className='invalid-feedback'>{errors.slug?.message}</p>
+                                                }
+                                            </div>
+                                        <div className=" row mb-3">
+                                        <div className="col-lg-6">
+                                                <label htmlFor="location" className='form-label'>Localisation</label>
+                                                <input
+                                                    {...register('location')}
+                                                    type='text' className='form-control' placeholder='Localisation' />
+                                            </div>
+                                            <div className="col-lg-6">
+                                                <label htmlFor="construction_type" className='form-label'>Type de construction</label>
+                                                <input
+                                                    {...register('construction_type')}
+                                                    type='text' className='form-control' placeholder='Type de construction' />
+                                            </div>
+                                        </div>
+                                        <div className="row mb-3">
+                                            <div className="col-lg-6">
+                                                <label htmlFor="sector" className='form-label'>Secteur</label>
+                                                <input
+                                                    {...register('sector')}
+                                                    type='text' className='form-control' placeholder='Secteur' />
+                                            </div>
+                                            <div className="col-lg-6">
+                                            <label htmlFor="status" className='form-label'>Statut</label>
+                                            <select
+                                                {...register('status')}
+                                                className='form-control'>
+                                                <option value="1">Active</option>
+                                                <option value="0">Bloqué</option>
+                                            </select>
+                                        </div>
                                         </div>
                                         <div className="mb-3">
                                             <label htmlFor="short_desc" className='form-label'>Description</label>
@@ -127,8 +155,7 @@ const Create = ({ placeholder }) => {
                                                 className='form-control' rows='4' placeholder='Description'></textarea>
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="content"
-                                                className='form-label'>Contenu</label>
+                                            <label htmlFor="content" className='form-label'>Contenu</label>
                                             <JoditEditor
                                                 ref={editor}
                                                 value={content}
@@ -137,15 +164,6 @@ const Create = ({ placeholder }) => {
                                                 onBlur={newContent => setContent(newContent)}
                                                 onChange={newContent => { }}
                                             />
-                                        </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="status" className='form-label'>Statut</label>
-                                            <select
-                                                {...register('status')}
-                                                className='form-control'>
-                                                <option value="1">Active</option>
-                                                <option value="0">Bloqué</option>
-                                            </select>
                                         </div>
                                         <div className="mb-3">
                                             <label htmlFor="image" className='form-label'>Image</label>
@@ -167,4 +185,4 @@ const Create = ({ placeholder }) => {
     );
 };
 
-export default Create;
+export default CreateProject;

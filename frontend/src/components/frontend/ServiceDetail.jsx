@@ -46,7 +46,7 @@ const ServiceDetail = ()=>{
                 <div className="container py-5">
                     <div className="row">
                         <div className="col-lg-3">
-                        <section className="section-19 ">
+                        <section className="section-19 mb-5">
                                 <div className="card shadow border-0 sidebar">
                                     <div className="card-body p-4">
                                         <h3 className="my-2">Nos Services</h3>
@@ -70,7 +70,7 @@ const ServiceDetail = ()=>{
                             <div className="d-flex  flex-column align-items-center">
                                 <img  src={`${fileUrl}uploads/services/${service.image}`} alt="image"/>
                             </div>
-                            <h3 className="py-3">{service.title}</h3>
+                            <h3 className="py-5 text-center">{service.title}</h3>
                             <div dangerouslySetInnerHTML={{__html:service.content}} className="text-justify">
                             
                             </div>

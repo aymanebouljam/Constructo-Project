@@ -11,8 +11,7 @@ function SideBar() {
             <ul>
                 <li><Link to="/admin/dashboard">Tableau de bord</Link></li>
                 <li><Link to="/admin/services">Services</Link></li>
-                <li><a href="#">Projets</a></li>
-                <li><a href="#">Articles</a></li>
+                <li><Link to="/admin/projects">Projets</Link></li>
                 <li><a href="#">Témognages</a></li>
                 <li><a href="#">Membres</a></li>
                 <li>
