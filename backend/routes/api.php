@@ -4,8 +4,10 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\admin\MemberController as AdminMemberController;
 use App\Http\Controllers\front\ProjectController as FrontProjectController;
 use App\Http\Controllers\front\ServiceController as FrontServiceController;
+use App\Http\Controllers\front\MemberController as FrontMemberController;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
@@ -20,6 +22,11 @@ Route::get('get-service/{id}', [FrontServiceController::class, 'service']);
 Route::get('get-projects', [FrontProjectController::class, 'index']);
 Route::get('get-latest-projects', [FrontProjectController::class, 'latestProjects']);
 Route::get('get-project/{id}', [FrontProjectController::class, 'project']);
+
+// Public Routes for Members
+Route::get('get-members', [FrontMemberController::class, 'index']);
+Route::get('get-latest-members', [FrontMemberController::class, 'latestMembers']);
+Route::get('get-member/{id}', [FrontMemberController::class, 'member']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -40,6 +47,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('projects/{id}', [AdminProjectController::class, 'update']);
     Route::get('projects/{id}', [AdminProjectController::class, 'show']);
     Route::delete('projects/{id}', [AdminProjectController::class, 'destroy']);
+
+    // Member Routes
+    Route::post('members', [AdminMemberController::class, 'store']);
+    Route::get('members', [AdminMemberController::class, 'index']);
+    Route::put('members/{id}', [AdminMemberController::class, 'update']);
+    Route::get('members/{id}', [AdminMemberController::class, 'show']);
+    Route::delete('members/{id}', [AdminMemberController::class, 'destroy']);
 
     // Temporary Image Routes
     Route::post('temp-images', [TempImageController::class, 'store']);

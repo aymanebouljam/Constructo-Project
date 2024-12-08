@@ -52,7 +52,7 @@ const Show = ()=>{
         <main>
             <div className="container my-5">
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-3 mb-4">
                         {<Sidebar />}
                     </div>
                     <div className="col-md-9">
@@ -84,9 +84,9 @@ const Show = ()=>{
                                                     <td>{
                                                             (service.status == 1) ? 'Active' : 'Blocked'
                                                         }</td>
-                                                    <td>
-                                                        <Link to={`/admin/services/edit/${service.id}`} className="btn btn-primary small">Modifier</Link>
-                                                        <Link href="/admin/services" className="btn btn-secondary small ms-3" onClick={()=> deleteService(service.id)}>Supprimer</Link>
+                                                    <td className='text-center'>
+                                                            <Link to={`/admin/services/edit/${service.id}`} className="btn btn-primary small">Modifier</Link>
+                                                            <Link href="/admin/services" className="btn btn-secondary ms-3 small" onClick={()=> deleteService(service.id)}>Supprimer</Link>
                                                     </td>
                                                 </tr>
                                                )

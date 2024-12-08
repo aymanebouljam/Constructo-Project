@@ -112,6 +112,7 @@ ul{
     background-color: $secondary-color !important;
     border-color: $secondary-color !important;
 }
+
 .section-header{
     span{
         text-transform: uppercase;
@@ -222,6 +223,7 @@ footer{
             justify-content: center;
         }
     }
+  
 }
 
 //Home
@@ -478,32 +480,38 @@ footer{
         font-weight: 500;
     }
 }
-.section-10{
-    .card{
+
+.section-10 {
+    .item {
         border-radius: 40px;
         margin-bottom: 20px;
-        img{
-            border-top-right-radius: 40px;
-            border-top-left-radius: 40px;
-            height: 350px ;
-            object-fit: cover;
-            object-position: center 10%;
-        }
-        .card-body{
-            a.title{
-                font-size: 1.4em;
+
+        .member-image {
+            img {
+                border-top-right-radius: 40px;
+                border-top-left-radius: 40px;
+                height: 350px;
+                object-fit: cover;
+                object-position: center 10%;
             }
-            .card-title{
-                font-size: 1.5em;
+        }
+        .member-body {
+            padding: 20px 30px;
+            .member-title {
+                font-size: 1.3em;
                 font-weight: 500;
             }
-            .card-subtitle{
+            .member-content {
                 font-size: 1.2em;
                 color: $light-background;
+                a {
+                    font-size: 1.4em;
+                }
             }
         }
     }
 }
+
 //Services
 .section-11{
     .hero {

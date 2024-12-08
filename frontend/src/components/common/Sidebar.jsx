@@ -12,8 +12,7 @@ function SideBar() {
                 <li><Link to="/admin/dashboard">Tableau de bord</Link></li>
                 <li><Link to="/admin/services">Services</Link></li>
                 <li><Link to="/admin/projects">Projets</Link></li>
-                <li><a href="#">Témognages</a></li>
-                <li><a href="#">Membres</a></li>
+                <li><Link to="/admin/members">Membres</Link></li>
                 <li>
                     <button type="button" className="btn btn-primary mt-4" onClick = {logout}>Déconnexion</button>
                 </li>

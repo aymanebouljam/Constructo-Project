@@ -1,24 +1,27 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Home from './components/frontend/Home.jsx'
-import About from './components/frontend/About.jsx'
-import Services from './components/frontend/Services.jsx'
-import ServiceDetail from './components/frontend/ServiceDetail.jsx'
-import Projects from './components/frontend/Projects.jsx'
-import ProjectDetail from './components/frontend/ProjectDetail.jsx'
-import ContactUs from './components/frontend/ContactUs.jsx'
-import Login from './components/backend/Login.jsx'
-import Dashboard from './components/backend/Dashboard.jsx'
-import { default as ShowServices } from './components/backend/services/Show.jsx'
-import { default as CreateService } from './components/backend/services/Create.jsx'
-import { default as EditService } from './components/backend/services/Edit.jsx'
-import { default as ShowProjects } from './components/backend/projects/Show.jsx'
-import { default as CreateProject } from './components/backend/projects/Create.jsx'
-import { default as EditProject } from './components/backend/projects/Edit.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './components/frontend/Home.jsx';
+import About from './components/frontend/About.jsx';
+import Services from './components/frontend/Services.jsx';
+import ServiceDetail from './components/frontend/ServiceDetail.jsx';
+import Projects from './components/frontend/Projects.jsx';
+import ProjectDetail from './components/frontend/ProjectDetail.jsx';
+import ContactUs from './components/frontend/ContactUs.jsx';
+import Login from './components/backend/Login.jsx';
+import Dashboard from './components/backend/Dashboard.jsx';
+import { default as ShowServices } from './components/backend/services/Show.jsx';
+import { default as CreateService } from './components/backend/services/Create.jsx';
+import { default as EditService } from './components/backend/services/Edit.jsx';
+import { default as ShowProjects } from './components/backend/projects/Show.jsx';
+import { default as CreateProject } from './components/backend/projects/Create.jsx';
+import { default as EditProject } from './components/backend/projects/Edit.jsx';
+import { default as ShowMembers } from './components/backend/members/Show.jsx';
+import { default as CreateMember } from './components/backend/members/Create.jsx';
+import { default as EditMember } from './components/backend/members/Edit.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './assets/css/style.scss'
-import RequireAuth from './components/common/RequireAuth.jsx'
+import './assets/css/style.scss';
+import RequireAuth from './components/common/RequireAuth.jsx';
 
 function App() {
   return (
@@ -40,12 +43,15 @@ function App() {
           <Route path='/admin/projects' element={<RequireAuth><ShowProjects /></RequireAuth>} />
           <Route path='/admin/projects/create' element={<RequireAuth><CreateProject /></RequireAuth>} />
           <Route path='/admin/projects/edit/:id' element={<RequireAuth><EditProject /></RequireAuth>} />
+          <Route path='/admin/members' element={<RequireAuth><ShowMembers /></RequireAuth>} />
+          <Route path='/admin/members/create' element={<RequireAuth><CreateMember /></RequireAuth>} />
+          <Route path='/admin/members/edit/:id' element={<RequireAuth><EditMember /></RequireAuth>} />
           <Route path='*' element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer position='top-center' />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
