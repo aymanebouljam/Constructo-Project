@@ -24,6 +24,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/style.scss';
 import RequireAuth from './components/common/RequireAuth.jsx';
+import ForgotPassword from './components/backend/ForgotPassword.jsx';
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
           <Route path='/project/:id' element={<ProjectDetail />} />
           <Route path='/contactUs' element={<ContactUs />} />
           <Route path='/admin' element={<Login />} />
+          <Route path='/admin/forgot-password' element={<ForgotPassword />} />
+          <Route path='/admin/reset-password' element={<ResetPassword />} />
           <Route path='/admin/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>} />
           <Route path='/admin/services' element={<RequireAuth><ShowServices /></RequireAuth>} />
           <Route path='/admin/services/create' element={<RequireAuth><CreateService /></RequireAuth>} />
@@ -53,7 +56,7 @@ function App() {
           <Route path='*' element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer position='top-center' />
+      <ToastContainer position='top-center' autoClose={2000} />
     </>
   );
 }

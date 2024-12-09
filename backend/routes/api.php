@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ServiceController;
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('authenticate', [AuthenticationController::class, 'authenticate']);
 
 // Password Management Routes
-Route::post('/change-password', [AuthenticationController::class, 'changePassword'])->middleware('auth:sanctum');
 Route::post('/send-reset-email', [AuthenticationController::class, 'sendPasswordResetEmail']);
+
 Route::post('/reset-password', [AuthenticationController::class, 'resetPassword']);
+
+Route::post('/change-password', [AuthenticationController::class, 'changePassword'])->middleware('auth:sanctum');
 
 // Public Routes for services
 Route::get('get-services', [FrontServiceController::class, 'index']);
@@ -62,7 +65,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Temporary Image Routes
     Route::post('temp-images', [TempImageController::class, 'store']);
-
-
-    
 });

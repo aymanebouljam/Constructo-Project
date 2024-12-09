@@ -1,14 +1,11 @@
 <?php
+
 namespace App\Mail;
 
-use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Queue\SerializesModels;
 
 class PasswordResetMail extends Mailable
 {
-    use Queueable, SerializesModels;
-
     public $token;
 
     public function __construct($token)
@@ -18,7 +15,17 @@ class PasswordResetMail extends Mailable
 
     public function build()
     {
-        return $this->view('emails.password-reset')  
-                    ->with(['token' => $this->token]);
+        return $this->subject('Password Reset Request')
+                    ->html($this->buildHtml());
+    }
+
+    protected function buildHtml()
+    {
+        $resetUrl = "http://localhost:5173/admin/reset-password?token={$this->token}";
+        
+        return "
+            <p>Click the link below to reset your password:</p>
+            <a href='{$resetUrl}'>Reset Password</a>
+        ";
     }
 }

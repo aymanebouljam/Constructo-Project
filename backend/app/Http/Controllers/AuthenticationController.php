@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PasswordResetMail;
 
 class AuthenticationController extends Controller
 {
@@ -89,76 +91,91 @@ class AuthenticationController extends Controller
         ], 200);
     }
 
+    // Send Password Reset Email
     public function sendPasswordResetEmail(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email'
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+    
+            $user = User::where('email', $request->email)->first();
+    
+            if (!$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found'
+                ], 404);
+            }
+    
+            $token = Str::random(64);
+            $user->password_reset_token = $token;
+            $user->password_reset_expires = now()->addHour();
+            $user->save();
+    
+            // Send reset email to the user with the generated token
+            Mail::to($user->email)->send(new PasswordResetMail($token));
 
-        if ($validator->fails()) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Password reset email sent successfully',
+            ], 200);
+        } catch (\Exception $e) {
+            \Log::error('Error in sendPasswordResetEmail: ' . $e->getMessage());
             return response()->json([
                 'status' => false,
-                'errors' => $validator->errors()
-            ], 422);
+                'message' => 'Something went wrong. Please try again later.',
+            ], 500);
         }
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user) {
-            return response()->json([
-                'status' => false,
-                'message' => 'User not found'
-            ], 404);
-        }
-
-        $token = Str::random(64);
-        $user->password_reset_token = $token;
-        $user->password_reset_expires = now()->addHour();
-        $user->save();
-
-        // Send reset email (assume a Mailable is set up)
-        Mail::to($user->email)->send(new \App\Mail\PasswordResetMail($token));
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Password reset email sent'
-        ], 200);
     }
 
+    // Reset Password using the token
     public function resetPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'token' => 'required',
             'new_password' => 'required|min:8|confirmed',
         ]);
-
+    
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors()
             ], 422);
         }
-
+    
+        // Find the user by the token
         $user = User::where('password_reset_token', $request->token)
             ->where('password_reset_expires', '>', now())
             ->first();
-
+    
         if (!$user) {
             return response()->json([
                 'status' => false,
-                'message' => 'Invalid or expired token'
+                'message' => 'Invalid or expired token',
             ], 400);
         }
-
+    
+        // Update the password
         $user->password = Hash::make($request->new_password);
-        $user->temporary_password = false;
-        $user->password_reset_token = null;
-        $user->password_reset_expires = null;
+        $user->password_reset_token = null;  // Remove token after use
+        $user->password_reset_expires = null;  // Clear expiration time
+        $user->temporary_password = false;  // Mark as permanent password
         $user->save();
-
+    
+        // Log the new password hash for debugging
+        \Log::info('New password hash: ' . $user->password); // This will log the hash in your log files for verification
+    
         return response()->json([
             'status' => true,
-            'message' => 'Password updated successfully'
+            'message' => 'Password updated successfully',
         ], 200);
     }
 }
