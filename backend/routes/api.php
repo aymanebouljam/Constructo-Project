@@ -62,4 +62,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Temporary Image Routes
     Route::post('temp-images', [TempImageController::class, 'store']);
+
+
+    
 });
