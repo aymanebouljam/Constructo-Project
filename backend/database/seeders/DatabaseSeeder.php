@@ -1,10 +1,8 @@
 <?php
-
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'John Doe',
-            'email' => 'admin@example.com',
+        // Create a new admin with a temporary password
+        User::factory()->withTemporaryPassword()->create([
+            'name' => 'Root',
+            'email' => 'root@constructo.ma',
         ]);
     }
 }

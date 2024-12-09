@@ -1,21 +1,25 @@
-import { useState, createContext } from "react";
-import { Navigate } from "react-router-dom";
+import React, { createContext, useState } from 'react';
 
-export const AuthContext = createContext(null);
-export const AuthProvider = ({children}) => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    const [user, setUser] = useState(userInfo)
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+    const [userInfo, setUserInfo] = useState(() => {
+        return JSON.parse(localStorage.getItem('userInfo')) || null;
+    });
 
     const login = (user) => {
-        setUser(user)
-    }
+        setUserInfo(user);
+        localStorage.setItem('userInfo', JSON.stringify(user));
+    };
+
     const logout = () => {
-        localStorage.removeItem('userInfo')
-        setUser(null)
-    }
+        setUserInfo(null);
+        localStorage.removeItem('userInfo');
+    };
+
     return (
-        <AuthContext.Provider value={{user, login, logout}}>
+        <AuthContext.Provider value={{ userInfo, login, logout }}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};

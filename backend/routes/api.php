@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 // Authentication Routes
 Route::post('authenticate', [AuthenticationController::class, 'authenticate']);
 
+// Password Management Routes
+Route::post('/change-password', [AuthenticationController::class, 'changePassword'])->middleware('auth:sanctum');
+Route::post('/send-reset-email', [AuthenticationController::class, 'sendPasswordResetEmail']);
+Route::post('/reset-password', [AuthenticationController::class, 'resetPassword']);
+
 // Public Routes for services
 Route::get('get-services', [FrontServiceController::class, 'index']);
 Route::get('get-latest-services', [FrontServiceController::class, 'latestServices']);

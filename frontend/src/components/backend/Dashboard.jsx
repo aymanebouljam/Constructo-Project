@@ -1,30 +1,42 @@
-import Header from '../common/Header.jsx'
-import Footer from '../common/Footer.jsx'
-import Sidebar from '../common/Sidebar.jsx'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Header from '../common/Header.jsx';
+import Footer from '../common/Footer.jsx';
+import Sidebar from '../common/Sidebar.jsx';
 
 function Dashboard() {
-  return (
-    <>
-        <Header />
-        <main>
-            <div className="container my-5">
-                <div className="row">
-                    <div className="col-md-3">
-                        {<Sidebar />}
-                    </div>
-                    <div className="col-md-9 dashboard">
-                        <div className="card shadow border-0">
-                            <div className="card-body d-flex justify-content-center align-items-center">
-                                <h4>Bienvenue dans l'espace d'Admin</h4>
+    const navigate = useNavigate();
+
+    // Check if the user is authenticated when the component loads
+    useEffect(() => {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        if (!userInfo) {
+            navigate('/');  // Redirect to the login page if not authenticated
+        }
+    }, [navigate]);
+
+    return (
+        <>
+            <Header />
+            <main>
+                <div className="container my-5">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <Sidebar />
+                        </div>
+                        <div className="col-md-9 dashboard">
+                            <div className="card shadow border-0">
+                                <div className="card-body d-flex justify-content-center align-items-center">
+                                    <h4>Bienvenue dans l'espace d'Admin</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-        <Footer />
-    </>
-  )
+            </main>
+            <Footer />
+        </>
+    );
 }
 
-export default Dashboard
+export default Dashboard;

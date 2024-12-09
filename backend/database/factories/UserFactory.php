@@ -23,12 +23,14 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        // You can pass the 'temporary' parameter to the factory to create a user with a temporary password
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make('password'), // Temporary password
             'remember_token' => Str::random(10),
+            'temporary_password' => false, // Default is false
         ];
     }
 
@@ -39,6 +41,17 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Indicate that the user has a temporary password.
+     */
+    public function withTemporaryPassword(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'password' => Hash::make('root'), // Set the temporary password
+            'temporary_password' => true, // Flag that the user has a temporary password
         ]);
     }
 }

@@ -18,6 +18,8 @@ import { default as EditProject } from './components/backend/projects/Edit.jsx';
 import { default as ShowMembers } from './components/backend/members/Show.jsx';
 import { default as CreateMember } from './components/backend/members/Create.jsx';
 import { default as EditMember } from './components/backend/members/Edit.jsx';
+import ChangePassword from './components/backend/ChangePassword.jsx';
+import ResetPassword from './components/backend/ResetPassword.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/style.scss';
@@ -46,6 +48,8 @@ function App() {
           <Route path='/admin/members' element={<RequireAuth><ShowMembers /></RequireAuth>} />
           <Route path='/admin/members/create' element={<RequireAuth><CreateMember /></RequireAuth>} />
           <Route path='/admin/members/edit/:id' element={<RequireAuth><EditMember /></RequireAuth>} />
+          <Route path='/admin/change-password' element={<ChangePassword />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
           <Route path='*' element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
