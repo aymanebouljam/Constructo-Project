@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\MemberController as AdminMemberController;
 use App\Http\Controllers\front\ProjectController as FrontProjectController;
 use App\Http\Controllers\front\ServiceController as FrontServiceController;
 use App\Http\Controllers\front\MemberController as FrontMemberController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
@@ -20,6 +21,12 @@ Route::post('/send-reset-email', [AuthenticationController::class, 'sendPassword
 Route::post('/reset-password', [AuthenticationController::class, 'resetPassword']);
 
 Route::post('/change-password', [AuthenticationController::class, 'changePassword'])->middleware('auth:sanctum');
+
+// Contact Route
+
+Route::post('/send-email', [ContactController::class, 'sendEmail']);
+
+
 
 // Public Routes for services
 Route::get('get-services', [FrontServiceController::class, 'index']);
@@ -66,3 +73,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Temporary Image Routes
     Route::post('temp-images', [TempImageController::class, 'store']);
 });
+

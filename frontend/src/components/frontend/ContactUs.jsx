@@ -3,41 +3,50 @@ import emailjs from 'emailjs-com';
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 function ContactUS() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: ""
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs.send(
-      'service_p8s31px', 
-      'template_gyvhue7', 
-      formData,
-      'n3wVQ6IST050pLXQL' 
-    )
-    .then((response) => {
-      toast.success('Message envoyé avec succès!');
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, (error) => {
-      toast.error("Échec de l'envoi du message, veuillez réessayer.");
-    });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success('Message sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        toast.error(result.error || 'Failed to send message.');
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again later.');
+    }
   };
 
   return (

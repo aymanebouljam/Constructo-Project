@@ -63,7 +63,7 @@ const Show = ()=>{
                                     <Link to="/admin/services/create" className="btn btn-primary">Créer</Link>
                                 </div>
                                 <hr/>
-                                <table className="table table-stripped text-center">
+                                <table className="table table-striped text-center">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
