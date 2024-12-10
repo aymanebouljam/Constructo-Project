@@ -28,9 +28,9 @@ function Projects() {
                     <div className="hero d-flex align-items-center">
                         <div className="container">
                             <div className="text-left">
-                                <span>Excellence. Reliability. Innovation.</span>
-                                <h1>Our Projects</h1>
-                                <p>We provide an extensive variety of construction projects,<br /> covering residential, commercial, and industrial sectors.</p>
+                                <span>Excellence. Fiabilité. Innovation.</span>
+                                <h1>Nos Projets</h1>
+                                <p>Nous proposons une large gamme de projets de construction,<br /> couvrant les secteurs résidentiel, commercial et industriel.</p>
                             </div>
                         </div>
                     </div>
@@ -39,9 +39,10 @@ function Projects() {
                 <section className="section-14 p-4 bg-light">
                     <div className="container">
                         <div className="section-header text-center">
-                            <span>Our Projects</span>
-                            <h2>Our Construction Projects</h2>
-                            <p>We deliver comprehensive construction solutions, integrating residential, commercial, and industrial projects with expertise and innovation.</p>
+                            <span>Nos Réalisations</span>
+                            <h2>Nos Projets de Construction</h2>
+                            <p>Nous offrons des solutions de construction complètes, intégrant des projets résidentiels, commerciaux et industriels avec expertise et innovation.</p>
+
                         </div>
                         <div className="row pt-4">
                             {

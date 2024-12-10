@@ -9,7 +9,6 @@ class Project extends Model
 {
     use HasFactory;
 
-    // Define the fillable properties
     protected $fillable = [
         'title',
         'slug',
@@ -22,7 +21,6 @@ class Project extends Model
         'status',
     ];
 
-    // Define the relationship to the TempImage model
     public function image()
     {
         return $this->belongsTo(TempImage::class, 'image_id');

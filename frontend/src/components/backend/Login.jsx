@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from './context/Auth.jsx';
 import Header from '../common/Header.jsx';
 import Footer from '../common/Footer.jsx';
+import{apiUrl} from '../common/http.jsx'
 
 function Login() {
     const { login } = useContext(AuthContext);
@@ -12,7 +13,7 @@ function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
-        const res = await fetch('http://127.0.0.1:8000/api/authenticate', {
+        const res = await fetch(apiUrl+'authenticate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
@@ -26,15 +27,15 @@ function Login() {
                 id: result.id,
                 token: result.token,
             };
-            localStorage.setItem('userInfo', JSON.stringify(userInfo)); // Store token in localStorage
+            localStorage.setItem('userInfo', JSON.stringify(userInfo)); 
 
-            // Check if user needs to change password
+           
             if (result.needs_password_change === 1) {
-                toast.info('Please change your temporary password before accessing the dashboard.');
-                navigate('/admin/change-password'); // Redirect to change password page
+                toast.info('Veuillez changer votre mot de passe temporaire.');
+                navigate('/admin/change-password'); 
             } else if (result.needs_password_change === 0) {
                 login(userInfo);
-                navigate('/admin/Dashboard'); // Redirect to dashboard after successful login
+                navigate('/admin/Dashboard'); 
             }
         }
     };

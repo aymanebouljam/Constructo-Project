@@ -20,7 +20,7 @@ const Edit = ({placeholder})=>{
 
     const config = useMemo(() => ({
         readonly: false,
-        placeholder: 'Contenu'
+        placeholder: ''
     }), [placeholder]);
 
     const {
@@ -58,7 +58,7 @@ const Edit = ({placeholder})=>{
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        // Include the imageId in the data sent to the API
+       
         const newData = { ...data, "content": content, "image": imageId };
 
 
@@ -174,7 +174,7 @@ const Edit = ({placeholder})=>{
                                         </div>
                                         <div className="mb-3">
                                             <label htmlFor="image" className='form-label'>Image</label>
-                                            <input type='file' className='form-control' onChange={handleFile} />
+                                            <input type='file' className='form-control mb-3' onChange={handleFile} />
                                             {
                                                 service.image && <img  width = '300' src={fileUrl + 'uploads/services/'+service.image}/>
                                             }

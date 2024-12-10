@@ -23,7 +23,7 @@ const ShowProjects = () => {
     };
 
     const deleteProject = async (id) => {
-        if (confirm("Please confirm the deletion of this project!")) {
+        if (confirm("Veuillez confirmer la suppression de ce projet !")) {
             const res = await fetch(apiUrl + 'projects/' + id, {
                 method: 'DELETE',
                 headers: {
@@ -60,17 +60,17 @@ const ShowProjects = () => {
                             <div className="card shadow border-0">
                                 <div className="card-body p-4">
                                     <div className="d-flex justify-content-between">
-                                        <h4 className='h5'>Projects</h4>
-                                        <Link to="/admin/projects/create" className="btn btn-primary">Create</Link>
+                                        <h4 className='h5'>Projets</h4>
+                                        <Link to="/admin/projects/create" className="btn btn-primary">Créer</Link>
                                     </div>
                                     <hr />
                                     <table className="table table-striped text-center">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Title</th>
+                                                <th>Titre</th>
                                                 <th>Référence</th>
-                                                <th>Status</th>
+                                                <th>Statut</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -83,7 +83,7 @@ const ShowProjects = () => {
                                                             <td>{project.title}</td>
                                                             <td>{project.slug}</td>
                                                             <td>{
-                                                                (project.status == 1) ? 'Active' : 'Blocked'
+                                                                (project.status == 1) ? 'Active' : 'Bloqué'
                                                             }</td>
                                                             <td>
                                                                 <Link to={`/admin/projects/edit/${project.id}`} className="btn btn-primary small">Modifier</Link>

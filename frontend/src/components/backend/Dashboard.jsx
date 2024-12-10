@@ -7,11 +7,11 @@ import Sidebar from '../common/Sidebar.jsx';
 function Dashboard() {
     const navigate = useNavigate();
 
-    // Check if the user is authenticated when the component loads
+   
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         if (!userInfo) {
-            navigate('/');  // Redirect to the login page if not authenticated
+            navigate('/');  
         }
     }, [navigate]);
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,7 +10,6 @@ class ContactController extends Controller
 {
     public function sendEmail(Request $request)
     {
-        // Validate the incoming request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -18,12 +18,11 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Send the email
         try {
             Mail::to('admin@constructo.ma')->send(new ContactMail($validated));
-            return response()->json(['success' => 'Message sent successfully!']);
+            return response()->json(['success' => 'Message envoyé avec succès!']);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to send message. Please try again later.']);
+            return response()->json(['error' => 'Échec de l\'envoi du message. Veuillez réessayer plus tard.']);
         }
     }
 }

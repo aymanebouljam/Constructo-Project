@@ -22,7 +22,7 @@ const CreateMember = () => {
         const newData = { ...data, 'image_id': imageId };
 
         if (!imageId) {
-            toast.error('Please upload an image before submitting the form');
+            toast.error('Veuillez télécharger une image avant de soumettre le formulaire.');
             return;
         }
 
@@ -90,7 +90,7 @@ const CreateMember = () => {
                                             <label htmlFor='name' className='form-label'>Nom</label>
                                             <input
                                                 {...register('name', {
-                                                    required: 'Name is required'
+                                                    required: 'Ce champs est obligatoire'
                                                 })}
                                                 type='text' className={`form-control ${errors.name && 'is-invalid'}`} placeholder='Nom' />
                                             {
@@ -101,7 +101,7 @@ const CreateMember = () => {
                                             <label htmlFor='job_title' className='form-label'>Titre du poste</label>
                                             <input
                                                 {...register('job_title', {
-                                                    required: 'Job title is required'
+                                                    required: 'Ce champs est obligatoire'
                                                 })}
                                                 type='text' className={`form-control ${errors.job_title && 'is-invalid'}`} placeholder='Titre du poste' />
                                             {

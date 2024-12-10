@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Log;
 
 class MemberController extends Controller
 {
-    // This method returns all active members
-    public function index() {
+    public function index()
+    {
         try {
             $members = Member::where('status', 1)->orderBy('created_at', 'DESC')->get();
             return response()->json([
@@ -18,47 +18,47 @@ class MemberController extends Controller
                 'data' => $members
             ]);
         } catch (\Exception $e) {
-            Log::error('Failed to retrieve members: ' . $e->getMessage());
+            Log::error('Échec de la récupération des membres : ' . $e->getMessage());
             return response()->json([
                 'status' => false,
-                'message' => 'Failed to retrieve members',
+                'message' => 'Échec de la récupération des membres',
                 'error' => $e->getMessage()
             ], 500);
         }
     }
 
-    // This method returns the latest active members
-    public function latestMembers(Request $request){
+    public function latestMembers(Request $request)
+    {
         try {
             $limit = $request->get('limit', 3);
-            
+
             $members = Member::where('status', 1)
-                        ->take($limit)
-                        ->orderBy('created_at', 'DESC')->get();
-                        
+                ->take($limit)
+                ->orderBy('created_at', 'DESC')->get();
+
             return response()->json([
                 'status' => true,
                 'data' => $members
             ]);
         } catch (\Exception $e) {
-            Log::error('Failed to retrieve latest members: ' . $e->getMessage());
+            Log::error('Échec de la récupération des derniers membres : ' . $e->getMessage());
             return response()->json([
                 'status' => false,
-                'message' => 'Failed to retrieve latest members',
+                'message' => 'Échec de la récupération des derniers membres',
                 'error' => $e->getMessage()
             ], 500);
         }
     }
 
-    // This method returns a single member by ID
-    public function member($id) {
+    public function member($id)
+    {
         try {
             $member = Member::find($id);
 
             if ($member == null) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Member not found'
+                    'message' => 'Membre introuvable'
                 ]);
             }
 
@@ -67,10 +67,10 @@ class MemberController extends Controller
                 'data' => $member
             ]);
         } catch (\Exception $e) {
-            Log::error('Failed to retrieve member: ' . $e->getMessage());
+            Log::error('Échec de la récupération du membre : ' . $e->getMessage());
             return response()->json([
                 'status' => false,
-                'message' => 'Failed to retrieve member',
+                'message' => 'Échec de la récupération du membre',
                 'error' => $e->getMessage()
             ], 500);
         }

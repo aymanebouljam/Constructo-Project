@@ -29,10 +29,10 @@ const Create = ({ placeholder }) => {
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        // Include the imageId in the data sent to the API
+        
         const newData = { ...data, "content": content, "image": imageId };
 
-        // Prevent submission if no image is uploaded
+      
         if (!imageId) {
             toast.error("Veuillez télécharger une image avant de soumettre le formulaire");
             return;
@@ -110,10 +110,10 @@ const Create = ({ placeholder }) => {
                                             }
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="slug" className='form-label'>Slug</label>
+                                            <label htmlFor="slug" className='form-label'>Référence</label>
                                             <input
                                                 {...register('slug', {
-                                                    required: "Le slug est obligatoire"
+                                                    required: "La référence est obligatoire"
                                                 })}
                                                 type='text' className={`form-control ${errors.slug && 'is-invalid'}`} placeholder='Référence' />
                                             {

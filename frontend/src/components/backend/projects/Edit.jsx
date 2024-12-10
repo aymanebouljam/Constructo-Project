@@ -20,7 +20,7 @@ const EditProject = ({ placeholder }) => {
 
     const config = useMemo(() => ({
         readonly: false,
-        placeholder: 'Contenu'
+        placeholder: ''
     }), [placeholder]);
 
     const {
@@ -191,7 +191,7 @@ const EditProject = ({ placeholder }) => {
                                         </div>
                                         <div className="mb-3">
                                             <label htmlFor="image" className='form-label'>Image</label>
-                                            <input type='file' className='form-control' onChange={handleFile} />
+                                            <input type='file' className='form-control mb-3' onChange={handleFile} />
                                             {
                                                 project.image && <img width='300' src={`${fileUrl}uploads/projects/${project.image}`} />
                                             }

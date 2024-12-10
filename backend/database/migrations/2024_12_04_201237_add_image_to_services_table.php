@@ -14,7 +14,7 @@ class AddImageToServicesTable extends Migration
     public function up()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->string('image')->nullable(); // Add the image column (nullable in case there is no image)
+            $table->string('image')->nullable(); 
         });
     }
 
@@ -26,7 +26,7 @@ class AddImageToServicesTable extends Migration
     public function down()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->dropColumn('image'); // Drop the image column if rolling back
+            $table->dropColumn('image'); 
         });
     }
 }

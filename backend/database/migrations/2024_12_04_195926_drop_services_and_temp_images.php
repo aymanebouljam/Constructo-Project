@@ -20,7 +20,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Recreate tables in the down method if necessary
+        
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('title');

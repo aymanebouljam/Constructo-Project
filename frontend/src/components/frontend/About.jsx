@@ -1,6 +1,6 @@
 import Header from "../common/Header.jsx";
 import Footer from "../common/Footer.jsx";
-import aboutImg from '../../assets/images/about.jpg';
+import aboutVideo from '../../assets/images/about.mp4';
 import { useEffect, useState } from 'react';
 import { apiUrl, fileUrl } from '../common/http.jsx';
 import { Link } from 'react-router-dom';
@@ -46,14 +46,18 @@ function About() {
                 <section className="section-9">
                     <div className="container py-5">
                         <div className="row">
-                            <div className="col-md-6">
-                                <img src={aboutImg} className='w-100' alt="About Us" />
+                            <div className="col-12 col-lg-6">
+                            <video width="100%" height="350" autoPlay muted loop>
+                                <source src={aboutVideo} type="video/mp4"/>
+                                Your browser does not support the video tag.
+                            </video>
                             </div>
-                            <div className="col-md-6 p-3">
+                            <div className="col-12 col-lg-6 px-3 py-4">
                                 <span>Qui sommes-nous ?</span>
                                 <h2>Des structures conçues pour durer toute une vie</h2>
                                 <p>La construction de structures durables demande une approche holistique qui intègre des matériaux avancés, une conception résiliente, un entretien régulier et des pratiques durables. En s'appuyant sur les connaissances historiques et en utilisant la technologie moderne.</p>
-                                <p>Concevoir des structures qui résistent à l'épreuve du temps nécessite un équilibre harmonieux entre matériaux de pointe, conceptions durables, entretien continu et pratiques écologiques.</p>
+                                <p>Pour garantir la longévité des structures, il est crucial d'incorporer une planification stratégique dès le début des projets. </p>
+
                             </div>
                         </div>
                     </div>
@@ -62,9 +66,9 @@ function About() {
                 <section className="section-10 p-4 bg-light">
                     <div className="container">
                         <div className="section-header text-center">
-                            <span>Our Team</span>
-                            <h2>Meet Our Latest Members</h2>
-                            <p>Get to know the newest additions to our team, bringing fresh perspectives and expertise to our projects.</p>
+                            <span>Notre Équipe</span>
+                            <h2>Rencontrez Nos Derniers Membres</h2>
+                            <p>Faites connaissance avec les nouvelles recrues de notre équipe, apportant de nouvelles perspectives et une expertise à nos projets.</p>
                         </div>
                         <div className="row pt-4">
                             {
@@ -81,7 +85,7 @@ function About() {
                                                     </div>
                                                     <div className="member-content">
                                                         <p>{member.job_title}</p>
-                                                        <a href={member.linkedin_url} target="_blank" rel="noopener noreferrer">
+                                                        <a href="#">
                                                             {linkedinIcon}
                                                         </a>
                                                     </div>

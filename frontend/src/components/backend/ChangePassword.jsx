@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/Auth';
+import{apiUrl} from '../common/http.jsx'
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 
@@ -20,11 +21,11 @@ function ChangePassword() {
             return;
         }
 
-        const res = await fetch('http://127.0.0.1:8000/api/change-password', {
+        const res = await fetch(apiUrl+'change-password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,  // Sending token with the request
+                'Authorization': `Bearer ${token}`, 
             },
             body: JSON.stringify(data),
         });

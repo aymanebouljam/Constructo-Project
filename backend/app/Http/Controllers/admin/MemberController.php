@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Log;
 
 class MemberController extends Controller
 {
-    // Get all members
     public function index()
     {
         $members = Member::all();
@@ -22,7 +21,6 @@ class MemberController extends Controller
         ]);
     }
 
-    // Get a single member
     public function show($id)
     {
         $member = Member::find($id);
@@ -30,7 +28,7 @@ class MemberController extends Controller
         if (!$member) {
             return response()->json([
                 'status' => false,
-                'message' => 'Member not found',
+                'message' => 'Membre non trouvé.',
             ], 404);
         }
 
@@ -40,7 +38,6 @@ class MemberController extends Controller
         ]);
     }
 
-    // Create a new member
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -62,12 +59,11 @@ class MemberController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Member created successfully',
+            'message' => 'Membre créé avec succès.',
             'member' => $member,
         ]);
     }
 
-    // Update a member
     public function update(Request $request, $id)
     {
         $member = Member::find($id);
@@ -75,7 +71,7 @@ class MemberController extends Controller
         if (!$member) {
             return response()->json([
                 'status' => false,
-                'message' => 'Member not found',
+                'message' => 'Membre non trouvé.',
             ], 404);
         }
 
@@ -97,12 +93,11 @@ class MemberController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Member updated successfully',
+            'message' => 'Membre mis à jour avec succès.',
             'member' => $member,
         ]);
     }
 
-    // Delete a member
     public function destroy($id)
     {
         $member = Member::find($id);
@@ -110,7 +105,7 @@ class MemberController extends Controller
         if (!$member) {
             return response()->json([
                 'status' => false,
-                'message' => 'Member not found',
+                'message' => 'Membre non trouvé.',
             ], 404);
         }
 
@@ -122,11 +117,10 @@ class MemberController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Member deleted successfully',
+            'message' => 'Membre supprimé avec succès.',
         ]);
     }
 
-    // Handle image copying from temp to members folder
     private function handleImage(Member $member, $tempImageId)
     {
         $tempImage = TempImage::find($tempImageId);
@@ -136,44 +130,38 @@ class MemberController extends Controller
             $destinationFolder = public_path('uploads/members/');
             $destinationPath = $destinationFolder . $tempImage->name;
 
-            Log::info('Checking for file existence at path: ' . $sourcePath);
+            Log::info('Vérification de l\'existence du fichier au chemin : ' . $sourcePath);
 
-            // Check if the source file exists
             if (!File::exists($sourcePath)) {
-                Log::error('Source file does not exist: ' . $sourcePath);
+                Log::error('Le fichier source n\'existe pas : ' . $sourcePath);
                 return response()->json([
                     'status' => false,
-                    'message' => 'Source file does not exist in the temp folder',
+                    'message' => 'Le fichier source n\'existe pas dans le dossier temporaire',
                 ], 400);
             }
 
-            // Ensure the destination folder exists
             if (!File::exists($destinationFolder)) {
                 File::makeDirectory($destinationFolder, 0755, true);
             }
 
-            // Copy the file to the destination
             if (File::copy($sourcePath, $destinationPath)) {
-                Log::info('File copied successfully from ' . $sourcePath . ' to ' . $destinationPath);
+                Log::info('Fichier copié avec succès de ' . $sourcePath . ' à ' . $destinationPath);
 
-                // Assign the image data to the member
                 $member->image_id = $tempImage->id;
                 $member->image = $tempImage->name;
 
-                // Mark the temp image as used
                 $tempImage->used = true;
                 $tempImage->save();
             } else {
-                Log::error('Failed to copy file from ' . $sourcePath . ' to ' . $destinationPath);
+                Log::error('Échec de la copie du fichier de ' . $sourcePath . ' à ' . $destinationPath);
                 return response()->json([
                     'status' => false,
-                    'message' => 'Failed to move the file to the members folder',
+                    'message' => 'Échec du déplacement du fichier vers le dossier des membres',
                 ], 500);
             }
         }
     }
 
-    // Delete image from the members folder
     private function deleteImage($imageName)
     {
         $imagePath = public_path('uploads/members/' . $imageName);

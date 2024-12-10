@@ -4,6 +4,7 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import{apiUrl} from '../common/http.jsx'
 
 function ContactUS() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ function ContactUS() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/send-email', {
+      const response = await fetch(apiUrl+'send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ function ContactUS() {
       const result = await response.json();
 
       if (response.ok) {
-        toast.success('Message sent successfully!');
+        toast.success('Message envoyé avec succès !');
         setFormData({
           name: '',
           email: '',
@@ -42,10 +43,10 @@ function ContactUS() {
           message: ''
         });
       } else {
-        toast.error(result.error || 'Failed to send message.');
+        toast.error(result.error || "Échec de l'envoi du message.");
       }
     } catch (error) {
-      toast.error('An error occurred. Please try again later.');
+      toast.error("Une erreur s'est produite. Veuillez réessayer plus tard.");
     }
   };
 
@@ -58,7 +59,7 @@ function ContactUS() {
             <div className="text-left">
               <span>Compétence. Confiance. Performance.</span>
               <h1>Contactez-Nous</h1>
-              <p>Nos experts dévoués sont à votre disposition pour répondre à toutes vos questions et vous accompagner tout au long de votre projet.</p>
+              <p>Nos experts dévoués sont à votre disposition pour répondre à<br/> toutes vos questions et vous accompagner tout au long de votre projet.</p>
             </div>
           </div>
         </div>
@@ -153,7 +154,7 @@ function ContactUS() {
                         required
                       ></textarea>
                     </div>
-                    <button type="submit" className="btn btn-primary large">Submit</button>
+                    <button type="submit" className="btn btn-primary large">Envoyer</button>
                   </form>
                 </div>
               </div>

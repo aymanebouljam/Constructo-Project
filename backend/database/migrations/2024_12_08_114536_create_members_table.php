@@ -10,17 +10,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Create the members table with a foreign key for image_id
+      
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('job_title');
             $table->string('linkedin_url')->nullable();
-            $table->unsignedBigInteger('image_id')->nullable(); // This will store the image ID from temp_images table
+            $table->unsignedBigInteger('image_id')->nullable(); 
             $table->integer('status')->default(1);
             $table->timestamps();
 
-            // Add foreign key constraint for image_id
+         
             $table->foreign('image_id')->references('id')->on('temp_images')->onDelete('set null');
         });
     }

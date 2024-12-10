@@ -223,7 +223,6 @@ footer{
             justify-content: center;
         }
     }
-  
 }
 
 //Home
@@ -281,10 +280,18 @@ footer{
     }
 }
 .section-2{
-    img{
-        border-radius : 40px;
-        margin-bottom: 20px;
+
+    p{
+        font-size: 1em;
     }
+  
+        img{
+            border-radius : 40px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+   
     span{
         display: block;
         text-transform: uppercase;
@@ -453,7 +460,7 @@ footer{
 //About Us
 .section-8{
     .hero {
-        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/about-hero.jpg');
+        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/about-hero.webp');
         background-size: cover;
         background-position: center 30%;
         color: $text-white;
@@ -480,7 +487,7 @@ footer{
         font-weight: 500;
     }
 }
-
+//Members
 .section-10 {
     .item {
         border-radius: 40px;
@@ -490,9 +497,9 @@ footer{
             img {
                 border-top-right-radius: 40px;
                 border-top-left-radius: 40px;
-                height: 350px;
+                height: 500px;
                 object-fit: cover;
-                object-position: center 10%;
+                object-position: center 60%;
             }
         }
         .member-body {
@@ -515,7 +522,7 @@ footer{
 //Services
 .section-11{
     .hero {
-        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/services-hero.jpg');
+        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/services-hero.webp');
         background-size: cover;
         background-position: center 20%;
         color: $text-white;
@@ -581,7 +588,7 @@ footer{
 //Projects
 .section-13{
     .hero {
-        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/projects-hero.jpg');
+        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/projects-hero.webp');
         background-size: cover;
         background-position: center 30%;
         color: $text-white;
@@ -649,7 +656,7 @@ footer{
 //Contact Us
 .section-17{
     .hero {
-        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/contactUs-hero.jpg');
+        background : linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) ), url('../images/contactUs-hero .webp');
         background-size: cover;
         background-position: center 50%;
         color: $text-white;

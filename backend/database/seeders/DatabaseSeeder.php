@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create a new admin with a temporary password
+        
         User::factory()->withTemporaryPassword()->create([
             'name' => 'Root',
             'email' => 'root@constructo.ma',

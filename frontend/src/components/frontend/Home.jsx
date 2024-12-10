@@ -1,12 +1,7 @@
 import Header from '../common/Header.jsx'
 import Footer from '../common/Footer.jsx'
-import AboutImg from '../../assets/images/aboutUs.jpg'
+import AboutImg from '../../assets/images/about.webp'
 import HeroVideo from '../../assets/images/hero.mp4';
-import ProjectImg1 from '../../assets/images/project1.jpg'
-import ProjectImg2 from '../../assets/images/project2.jpg'
-import ProjectImg3 from '../../assets/images/project3.jpg'
-import Icon1 from '../../assets/images/icon1.svg'
-import Icon2 from '../../assets/images/icon2.svg'
 import AvatarImg1 from '../../assets/images/avatar1.jpg'
 import AvatarImg2 from '../../assets/images/avatar2.jpg'
 import AvatarImg3 from '../../assets/images/avatar3.jpg'
@@ -20,6 +15,7 @@ import 'swiper/css/pagination';
 import { useState, useEffect } from 'react';
 import LatestServices from '../common/LatestServices.jsx';
 import LatestProjects from '../common/LatestProjects.jsx';
+import { Link } from 'react-router-dom';
 
     const Home = () => {
       
@@ -45,8 +41,8 @@ import LatestProjects from '../common/LatestProjects.jsx';
                             <h1>Concrétiser vos rêves avec <br/> précision et excellence</h1>
                             <p>Nous excellons dans la transformation des visions en réalité grâce à un artisanat exceptionnel et une attention <br/> méticuleuse. Avec des années d'expérience et un engagement envers la qualité</p>
                             <div className=" hero-btn mx-auto w-50 d-flex justify-content-evenly py-3">
-                                    <a className='btn btn-primary large'>Contactez Nous</a>
-                                    <a className='btn btn-secondary large'>Voir Projets</a>
+                                    <Link to="/contactUs" className='btn btn-primary large' >Contactez Nous</Link>
+                                    <Link to="/projects" className='btn btn-secondary large'>Voir Projets</Link>
                             </div>
                         </div>
                     </div>
@@ -54,16 +50,18 @@ import LatestProjects from '../common/LatestProjects.jsx';
             </section>
             {/* About us section */}
             <section className="section-2">
-            <div className="container py-5">
+            <div className="container p-5">
                 <div className="row">
-                    <div className="col-md-6 d-flex align-items-center">
+                    <div className="col-12 col-xl-6 pb-2">
                         <img src={AboutImg} className='w-100'/>
                     </div>
-                    <div className="col-md-6 p-3">
+                    <div className="col-12 col-xl-6 pt-3">
                         <span>À propos de nous</span>
                         <h2>Des structures durables</h2>
                         <p>Construire des structures durables nécessite une approche globale qui combine matériaux avancés, conception résiliente, entretien régulier et pratiques durables. En s'appuyant sur des connaissances historiques et en utilisant la technologie moderne.</p>
-                        <p>La conception de structures qui résistent à l'épreuve du temps implique un mélange harmonieux de matériaux de pointe, de conceptions durables, d'entretien continu et de pratiques écologiques.</p>
+                        <p>La conception de structures qui résistent à l'épreuve du temps implique un mélange harmonieux de matériaux de pointe, de conceptions durables, d'entretien continu et de pratiques écologiques.
+                        Pour garantir la longévité des structures, il est crucial d'incorporer une planification stratégique dès le début des projets. Cela inclut des évaluations des conditions environnementales,.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -82,29 +80,36 @@ import LatestProjects from '../common/LatestProjects.jsx';
                         <div className="col-md-6 col-xl-4">
                             <div className="card shadow border-0 p-4">
                                 <div className="card-icon">
-                                    <img src={Icon1} className='w-25'/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" className="bi bi-lightbulb" viewBox="0 0 16 16">
+                                    <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"/>
+                                    </svg>
                                 </div>
                                 <div className="card-title mt-3">
                                     <h3>Solutions de pointe</h3>
                                 </div>
-                                <p>Les petites actions créent de grands impacts. Tout commence et se termine avec chaque employé s'engageant à adopter des pratiques de travail plus sûres quotidiennement, garantissant ainsi leur retour chez eux en sécurité.</p>
+                                <p>Les petites actions créent de grands impacts. Tout commence et se termine avec chaque employé s'engageant à adopter des pratiques de travail plus sûres quotidiennement, garantissant ainsi leur retour en sécurité.</p>
                             </div>
                         </div>
                         <div className="col-md-6 col-xl-4">
                             <div className="card shadow border-0 p-4">
                                 <div className="card-icon">
-                                    <img src={Icon2} className='w-25'/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" className="bi bi-cone-striped" viewBox="0 0 16 16">
+                                    <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9s-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12m-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4s1.2-.036 1.725-.098m4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257z"/>
+                                    </svg>
                                 </div>
                                 <div className="card-title mt-3">
                                 <h3>Stratégies Innovantes</h3>
                                 </div>
-                                <p>Chaque détail compte. Notre équipe met en avant des stratégies innovantes qui améliorent l'efficacité et la sécurité sur le chantier. Cet engagement garantit que chaque projet est achevé selon les normes les plus élevées.</p>
+                                <p>Chaque détail compte. Notre équipe met en avant des stratégies innovantes qui améliorent l'efficacité et la sécurité sur le chantier. Cet engagement garantit que chaque projet achevé selon normes plus élevées.</p>
                             </div>
                         </div>
                         <div className="col-md-6 col-xl-4">
                             <div className="card shadow border-0 p-4">
                                 <div className="card-icon">
-                                    <img src={Icon2} className='w-25'/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" className="bi bi-building" viewBox="0 0 16 16">
+                                    <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+                                    <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z"/>
+                                    </svg>
                                 </div>
                                 <div className="card-title mt-3">
                                     <h3>Engagement Qualité</h3>
@@ -197,7 +202,7 @@ import LatestProjects from '../common/LatestProjects.jsx';
                                             <img src={AvatarImg3} />
                                         </div>
                                         <div className='ps-3'>
-                                            <div className='name'>Hassan El Kharraz</div>
+                                            <div className='name'>Hassan Rouchdi</div>
                                             <div>Ingénieur R&D</div>
                                         </div>
                                     </div>
@@ -257,7 +262,7 @@ import LatestProjects from '../common/LatestProjects.jsx';
                                             <img src={AvatarImg6} />
                                         </div>
                                         <div className='ps-3'>
-                                            <div className='name'>Nadia Chraibi</div>
+                                            <div className='name'>Youness Chraibi</div>
                                             <div>Économiste</div>
                                         </div>
                                     </div>

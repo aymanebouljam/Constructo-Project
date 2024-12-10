@@ -4,11 +4,12 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import Header from '../common/Header.jsx';
 import Footer from '../common/Footer.jsx';
+import { apiUrl } from '../common/http.jsx';
 
 const ResetPassword = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const token = searchParams.get('token'); // Retrieve token from URL
+    const token = searchParams.get('token'); 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -22,7 +23,7 @@ const ResetPassword = () => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/reset-password', {
+            const response = await axios.post(apiUrl+'reset-password', {
                 token,
                 new_password: password,
                 new_password_confirmation: confirmPassword,

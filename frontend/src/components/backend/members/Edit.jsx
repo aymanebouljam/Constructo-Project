@@ -145,7 +145,7 @@ const EditMember = () => {
                                         </div>
                                         <div className="mb-3">
                                             <label htmlFor="image" className='form-label'>Image</label>
-                                            <input type='file' className='form-control' onChange={handleFile} />
+                                            <input type='file' className='form-control mb-3' onChange={handleFile} />
                                             {
                                                 member.image && <img width='300' src={`${fileUrl}uploads/members/${member.image}`} />
                                             }

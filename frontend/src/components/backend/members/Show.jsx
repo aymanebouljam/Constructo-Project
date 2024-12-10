@@ -23,7 +23,7 @@ const ShowMembers = () => {
     };
 
     const deleteMember = async (id) => {
-        if (confirm("Please confirm the deletion of this member!")) {
+        if (confirm("Veuillez confirmer la suppression de ce membre !")) {
             const res = await fetch(apiUrl + 'members/' + id, {
                 method: 'DELETE',
                 headers: {
@@ -60,17 +60,17 @@ const ShowMembers = () => {
                             <div className="card shadow border-0">
                                 <div className="card-body p-4">
                                     <div className="d-flex justify-content-between">
-                                        <h4 className='h5'>Members</h4>
-                                        <Link to="/admin/members/create" className="btn btn-primary">Create</Link>
+                                        <h4 className='h5'>Membres</h4>
+                                        <Link to="/admin/members/create" className="btn btn-primary">Créer</Link>
                                     </div>
                                     <hr />
                                     <table className="table table-striped text-center">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Job Title</th>
-                                                <th>Status</th>
+                                                <th>Nom</th>
+                                                <th>Poste</th>
+                                                <th>Statut</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -83,11 +83,11 @@ const ShowMembers = () => {
                                                             <td>{member.name}</td>
                                                             <td>{member.job_title}</td>
                                                             <td>{
-                                                                (member.status == 1) ? 'Active' : 'Blocked'
+                                                                (member.status == 1) ? 'Active' : 'Bloqué'
                                                             }</td>
                                                             <td>
-                                                                <Link to={`/admin/members/edit/${member.id}`} className="btn btn-primary small">Edit</Link>
-                                                                <button className="btn btn-secondary small ms-3" onClick={() => deleteMember(member.id)}>Delete</button>
+                                                                <Link to={`/admin/members/edit/${member.id}`} className="btn btn-primary small">Modifier</Link>
+                                                                <button className="btn btn-secondary small ms-3" onClick={() => deleteMember(member.id)}>Supprimer</button>
                                                             </td>
                                                         </tr>
                                                     )

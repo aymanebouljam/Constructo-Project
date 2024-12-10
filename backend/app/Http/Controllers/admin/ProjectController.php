@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Log;
 
 class ProjectController extends Controller
 {
-    // Get all projects
     public function index()
     {
         $projects = Project::all();
@@ -22,7 +21,6 @@ class ProjectController extends Controller
         ]);
     }
 
-    // Get a single project
     public function show($id)
     {
         $project = Project::find($id);
@@ -30,7 +28,7 @@ class ProjectController extends Controller
         if (!$project) {
             return response()->json([
                 'status' => false,
-                'message' => 'Project not found',
+                'message' => 'Projet non trouvé',
             ], 404);
         }
 
@@ -40,7 +38,6 @@ class ProjectController extends Controller
         ]);
     }
 
-    // Create a new project
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -66,12 +63,11 @@ class ProjectController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Project created successfully',
+            'message' => 'Projet créé avec succès',
             'project' => $project,
         ]);
     }
 
-    // Update a project
     public function update(Request $request, $id)
     {
         $project = Project::find($id);
@@ -79,7 +75,7 @@ class ProjectController extends Controller
         if (!$project) {
             return response()->json([
                 'status' => false,
-                'message' => 'Project not found',
+                'message' => 'Projet non trouvé',
             ], 404);
         }
 
@@ -105,12 +101,11 @@ class ProjectController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Project updated successfully',
+            'message' => 'Projet mis à jour avec succès',
             'project' => $project,
         ]);
     }
 
-    // Delete a project
     public function destroy($id)
     {
         $project = Project::find($id);
@@ -118,7 +113,7 @@ class ProjectController extends Controller
         if (!$project) {
             return response()->json([
                 'status' => false,
-                'message' => 'Project not found',
+                'message' => 'Projet non trouvé',
             ], 404);
         }
 
@@ -130,11 +125,10 @@ class ProjectController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Project deleted successfully',
+            'message' => 'Projet supprimé avec succès',
         ]);
     }
 
-    // Handle image copying from temp to projects folder
     private function handleImage(Project $project, $tempImageId)
     {
         $tempImage = TempImage::find($tempImageId);
@@ -144,44 +138,38 @@ class ProjectController extends Controller
             $destinationFolder = public_path('uploads/projects/');
             $destinationPath = $destinationFolder . $tempImage->name;
 
-            Log::info('Checking for file existence at path: ' . $sourcePath);
+            Log::info('Vérification de l\'existence du fichier au chemin : ' . $sourcePath);
 
-            // Check if the source file exists
             if (!File::exists($sourcePath)) {
-                Log::error('Source file does not exist: ' . $sourcePath);
+                Log::error('Le fichier source n\'existe pas : ' . $sourcePath);
                 return response()->json([
                     'status' => false,
-                    'message' => 'Source file does not exist in the temp folder',
+                    'message' => 'Le fichier source n\'existe pas dans le dossier temporaire',
                 ], 400);
             }
 
-            // Ensure the destination folder exists
             if (!File::exists($destinationFolder)) {
                 File::makeDirectory($destinationFolder, 0755, true);
             }
 
-            // Copy the file to the destination
             if (File::copy($sourcePath, $destinationPath)) {
-                Log::info('File copied successfully from ' . $sourcePath . ' to ' . $destinationPath);
+                Log::info('Fichier copié avec succès de ' . $sourcePath . ' à ' . $destinationPath);
 
-                // Assign the image data to the project
                 $project->image_id = $tempImage->id;
                 $project->image = $tempImage->name;
 
-                // Mark the temp image as used
                 $tempImage->used = true;
                 $tempImage->save();
             } else {
-                Log::error('Failed to copy file from ' . $sourcePath . ' to ' . $destinationPath);
+                Log::error('Échec de la copie du fichier de ' . $sourcePath . ' à ' . $destinationPath);
                 return response()->json([
                     'status' => false,
-                    'message' => 'Failed to move the file to the projects folder',
+                    'message' => 'Échec du déplacement du fichier vers le dossier des projets',
                 ], 500);
             }
         }
     }
 
-    // Delete image from the projects folder
     private function deleteImage($imageName)
     {
         $imagePath = public_path('uploads/projects/' . $imageName);

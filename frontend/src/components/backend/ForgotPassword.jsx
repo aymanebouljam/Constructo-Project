@@ -2,13 +2,14 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import Header from '../common/Header.jsx';
 import Footer from '../common/Footer.jsx';
+import{apiUrl} from '../common/http.jsx'
 
 function ForgotPassword() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
         try {
-            const res = await fetch('http://127.0.0.1:8000/api/send-reset-email', {
+            const res = await fetch(apiUrl+'send-reset-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -24,7 +25,7 @@ function ForgotPassword() {
             }
         } catch (error) {
             console.error('Error:', error);
-            toast.error('An error occurred while sending the email.');
+            toast.error("Une erreur s'est produite lors de l'envoi de l'email.");
         }
     };
 
@@ -41,10 +42,10 @@ function ForgotPassword() {
                                     <div className="mb-4">
                                         <input
                                             {...register('email', {
-                                                required: 'This field is required',
+                                                required: 'Ce champs est obligatoire',
                                                 pattern: {
                                                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                                                    message: 'Please enter a valid email address',
+                                                    message: 'Veuillez entrer une adresse e-mail valide.',
                                                 },
                                             })}
                                             type="email"

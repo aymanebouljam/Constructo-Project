@@ -22,9 +22,9 @@ const LatestProjects = () => {
             <section className="section-5 bg-light">
                 <div className="container py-5">
                     <div className="section-header text-center">
-                        <span>Our Projects</span>
-                        <h2>Our Construction Projects</h2>
-                        <p>We offer a diverse range of construction projects, covering residential, commercial, and industrial sectors.</p>
+                        <span>Nos Projets</span>
+                        <h2>Nos Projets de Construction</h2>
+                        <p>Nous proposons une gamme diversifiée de projets de construction, couvrant les secteurs résidentiel, commercial et industriel.</p>
                     </div>
                     <div className="row pt-4">
                         {

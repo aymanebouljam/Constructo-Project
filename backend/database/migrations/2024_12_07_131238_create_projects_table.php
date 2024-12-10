@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         
-        // Recreate the projects table with a foreign key for image_id
+        
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('status')->default(1);
             $table->timestamps();
 
-            // Add foreign key constraint for image_id
+           
             $table->foreign('image_id')->references('id')->on('temp_images')->onDelete('set null');
         });
     }

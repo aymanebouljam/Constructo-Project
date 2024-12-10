@@ -15,7 +15,6 @@ class AuthenticationController extends Controller
 {
     public function authenticate(Request $request)
     {
-        // Validate the incoming request
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
@@ -32,25 +31,23 @@ class AuthenticationController extends Controller
             $user = Auth::user();
             $token = $user->createToken('auth_token')->plainTextToken;
 
-            // Check if the user's password is temporary
-            $needsPasswordChange = $user->temporary_password; // Assuming `temporary_password` is a column in your User model
+            $needsPasswordChange = $user->temporary_password;
 
             return response()->json([
                 'status' => true,
-                'message' => 'Authentication successful',
+                'message' => 'Authentification réussie',
                 'token' => $token,
                 'id' => $user->id,
-                'needs_password_change' => $needsPasswordChange, // Add this flag
+                'needs_password_change' => $needsPasswordChange,
             ], 200);
         }
 
         return response()->json([
             'status' => false,
-            'message' => 'Invalid credentials',
+            'message' => 'Identifiants invalides',
         ], 401);
     }
 
-    // Password change method
     public function changePassword(Request $request)
     {
         $request->validate([
@@ -60,26 +57,23 @@ class AuthenticationController extends Controller
 
         $user = Auth::user();
 
-        // Check if old password matches
         if (!Hash::check($request->old_password, $user->password)) {
             return response()->json([
                 'status' => false,
-                'message' => 'Old password is incorrect',
+                'message' => 'L\'ancien mot de passe est incorrect',
             ], 400);
         }
 
-        // Update password
         $user->password = Hash::make($request->new_password);
-        $user->temporary_password = false; // Mark the password as no longer temporary
+        $user->temporary_password = false;
         $user->save();
 
         return response()->json([
             'status' => true,
-            'message' => 'Password changed successfully',
+            'message' => 'Mot de passe changé avec succès',
         ], 200);
     }
 
-    // Logout method
     public function logout(Request $request)
     {
         $user = Auth::user();
@@ -87,11 +81,10 @@ class AuthenticationController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Logged out successfully'
+            'message' => 'Déconnexion réussie'
         ], 200);
     }
 
-    // Send Password Reset Email
     public function sendPasswordResetEmail(Request $request)
     {
         try {
@@ -111,7 +104,7 @@ class AuthenticationController extends Controller
             if (!$user) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'User not found'
+                    'message' => 'Utilisateur non trouvé'
                 ], 404);
             }
     
@@ -120,23 +113,21 @@ class AuthenticationController extends Controller
             $user->password_reset_expires = now()->addHour();
             $user->save();
     
-            // Send reset email to the user with the generated token
             Mail::to($user->email)->send(new PasswordResetMail($token));
 
             return response()->json([
                 'status' => true,
-                'message' => 'Password reset email sent successfully',
+                'message' => 'Email de réinitialisation du mot de passe envoyé avec succès',
             ], 200);
         } catch (\Exception $e) {
-            \Log::error('Error in sendPasswordResetEmail: ' . $e->getMessage());
+            \Log::error('Erreur dans sendPasswordResetEmail: ' . $e->getMessage());
             return response()->json([
                 'status' => false,
-                'message' => 'Something went wrong. Please try again later.',
+                'message' => 'Quelque chose s\'est mal passé. Veuillez réessayer plus tard.',
             ], 500);
         }
     }
 
-    // Reset Password using the token
     public function resetPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -151,7 +142,6 @@ class AuthenticationController extends Controller
             ], 422);
         }
     
-        // Find the user by the token
         $user = User::where('password_reset_token', $request->token)
             ->where('password_reset_expires', '>', now())
             ->first();
@@ -159,23 +149,21 @@ class AuthenticationController extends Controller
         if (!$user) {
             return response()->json([
                 'status' => false,
-                'message' => 'Invalid or expired token',
+                'message' => 'Token invalide ou expiré',
             ], 400);
         }
     
-        // Update the password
         $user->password = Hash::make($request->new_password);
-        $user->password_reset_token = null;  // Remove token after use
-        $user->password_reset_expires = null;  // Clear expiration time
-        $user->temporary_password = false;  // Mark as permanent password
+        $user->password_reset_token = null;
+        $user->password_reset_expires = null;
+        $user->temporary_password = false;
         $user->save();
     
-        // Log the new password hash for debugging
-        \Log::info('New password hash: ' . $user->password); // This will log the hash in your log files for verification
+        \Log::info('Nouveau mot de passe hashé : ' . $user->password);
     
         return response()->json([
             'status' => true,
-            'message' => 'Password updated successfully',
+            'message' => 'Mot de passe mis à jour avec succès',
         ], 200);
     }
 }

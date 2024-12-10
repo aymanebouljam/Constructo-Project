@@ -24,8 +24,8 @@ class PasswordResetMail extends Mailable
         $resetUrl = "http://localhost:5173/admin/reset-password?token={$this->token}";
         
         return "
-            <p>Click the link below to reset your password:</p>
-            <a href='{$resetUrl}'>Reset Password</a>
+            <p>Cliquez sur le lien ci-dessous pour réinitialiser votre mot de passe :</p>
+            <a href='{$resetUrl}'>Réinitialiser</a>
         ";
     }
 }
