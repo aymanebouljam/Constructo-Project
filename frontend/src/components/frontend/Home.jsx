@@ -55,7 +55,7 @@ import { Link } from 'react-router-dom';
                     <div className="col-12 col-xl-6 pb-2">
                         <img src={AboutImg} className='w-100'/>
                     </div>
-                    <div className="col-12 col-xl-6 pt-3">
+                    <div className="col-12 col-xl-6 p-4">
                         <span>À propos de nous</span>
                         <h2>Des structures durables</h2>
                         <p>Construire des structures durables nécessite une approche globale qui combine matériaux avancés, conception résiliente, entretien régulier et pratiques durables. En s'appuyant sur des connaissances historiques et en utilisant la technologie moderne.</p>
