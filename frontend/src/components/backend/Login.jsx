@@ -28,12 +28,13 @@ function Login() {
                 token: result.token,
             };
             localStorage.setItem('userInfo', JSON.stringify(userInfo)); 
+            console.log(result);
 
            
-            if (result.needs_password_change === 1) {
+            if (result.needs_password_change === true) {
                 toast.info('Veuillez changer votre mot de passe temporaire.');
                 navigate('/admin/change-password'); 
-            } else if (result.needs_password_change === 0) {
+            } else if (result.needs_password_change === false) {
                 login(userInfo);
                 navigate('/admin/Dashboard'); 
             }
