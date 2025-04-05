@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,6 +7,8 @@ use App\Models\Service;
 use App\Models\TempImage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class ServiceController extends Controller
 {
@@ -51,18 +52,24 @@ class ServiceController extends Controller
 
         $service = new Service();
         $service->fill($validated);
+      
+        try {
+            if ($request->has('image') && $request->image > 0) {
+                $this->handleImage($service, $request->image);
+            }
+            $service->save();
 
-        if ($request->has('image') && $request->image > 0) {
-            $this->handleImage($service, $request->image);
+            return response()->json([
+                'status' => true,
+                'message' => 'Service créé avec succès',
+                'service' => $service,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Erreur: ' . $e->getMessage(),
+            ], 500);
         }
-
-        $service->save();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Service créé avec succès',
-            'service' => $service,
-        ]);
     }
 
     public function update(Request $request, $id)
@@ -86,18 +93,24 @@ class ServiceController extends Controller
         ]);
 
         $service->fill($validated);
+        Log::info($request->all());
+        try {
+            if ($request->has('image') && $request->image > 0) {
+                $this->handleImage($service, $request->image);
+            }
+            $service->save();
 
-        if ($request->has('image') && $request->image > 0) {
-            $this->handleImage($service, $request->image);
+            return response()->json([
+                'status' => true,
+                'message' => 'Service mis à jour avec succès',
+                'service' => $service,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Erreur: ' . $e->getMessage(),
+            ], 500);
         }
-
-        $service->save();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Service mis à jour avec succès',
-            'service' => $service,
-        ]);
     }
 
     public function destroy($id)
@@ -111,65 +124,76 @@ class ServiceController extends Controller
             ], 404);
         }
 
-        if ($service->image) {
-            $this->deleteImage($service->image);
+        try {
+            if ($service->image) {
+                $this->deleteImage($service->image);
+            }
+
+            $service->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Service supprimé avec succès',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Erreur: ' . $e->getMessage(),
+            ], 500);
         }
-
-        $service->delete();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Service supprimé avec succès',
-        ]);
     }
 
     private function handleImage(Service $service, $tempImageId)
     {
+        Log::info('image');
         $tempImage = TempImage::find($tempImageId);
-    
+        
         if ($tempImage) {
             $sourcePath = public_path('uploads/temp/' . $tempImage->name);
             $destinationFolder = public_path('uploads/services/');
             $destinationPath = $destinationFolder . $tempImage->name;
-    
-            Log::info('Vérification de l\'existence du fichier au chemin : ' . $sourcePath);
-    
-            if (!File::exists($sourcePath)) {
+            
+         
+            if (!file_exists($sourcePath)) {
                 Log::error('Le fichier source n\'existe pas : ' . $sourcePath);
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Le fichier source n\'existe pas dans le dossier temporaire',
-                ], 400);
+                return false;
             }
-    
-            if (!File::exists($destinationFolder)) {
-                File::makeDirectory($destinationFolder, 0755, true);
+            
+           
+            if (!file_exists($destinationFolder)) {
+                mkdir($destinationFolder, 0755, true);
             }
+            
     
-            if (File::copy($sourcePath, $destinationPath)) {
+            if (copy($sourcePath, $destinationPath)) {
                 Log::info('Fichier copié avec succès de ' . $sourcePath . ' à ' . $destinationPath);
-    
+                
+            
                 $service->image_id = $tempImage->id;
                 $service->image = $tempImage->name;
-    
+                
+               
                 $tempImage->used = true;
                 $tempImage->save();
+                
+                return true;
             } else {
                 Log::error('Échec de la copie du fichier de ' . $sourcePath . ' à ' . $destinationPath);
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Échec du déplacement du fichier vers le dossier des services',
-                ], 500);
+                return false;
             }
         }
+        
+        return false;
     }
-
+    
+   
     private function deleteImage($imageName)
     {
         $imagePath = public_path('uploads/services/' . $imageName);
-
-        if (File::exists($imagePath)) {
-            File::delete($imagePath);
+        
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
     }
+    
 }

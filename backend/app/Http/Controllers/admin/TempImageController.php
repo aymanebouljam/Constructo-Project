@@ -12,18 +12,6 @@ class TempImageController extends Controller
 {
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'image' => 'required|mimes:png,jpg,jpeg,gif,webp'
-        ]);
-
-        if ($validator->fails()) {
-            Log::error('Échec de la validation de l\'image : ' . json_encode($validator->errors()));
-            return response()->json([
-                'status' => false,
-                'errors' => $validator->errors(),
-            ]);
-        }
-
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $ext = $image->getClientOriginalExtension();

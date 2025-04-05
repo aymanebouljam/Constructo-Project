@@ -33,12 +33,14 @@ function Services() {
                 </div>
             </section>
             {/* Our Services */}
-            <section className="section-12 p-4 bg-light">
+            <section className="section-12 p-4 bg-light p-5">
             <div className="container">
                 <div className="section-header text-center">
                     <span>Nos Services</span>
+                    <hr/>
                     <h2>Nos services de construction</h2>
                     <p>Nous assurons des solutions complètes en construction, intégrant des projets résidentiels, commerciaux et industriels avec expertise et innovation.</p>
+                    <hr/>
                 </div>
                 <div className="row pt-4">
                         {

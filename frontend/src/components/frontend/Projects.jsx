@@ -36,13 +36,14 @@ function Projects() {
                     </div>
                 </section>
                 {/* Our Projects */}
-                <section className="section-14 p-4 bg-light">
+                <section className="section-14 p-5 bg-light">
                     <div className="container">
                         <div className="section-header text-center">
                             <span>Nos Réalisations</span>
-                            <h2>Nos Projets de Construction</h2>
-                            <p>Nous offrons des solutions de construction complètes, intégrant des projets résidentiels, commerciaux et industriels avec expertise et innovation.</p>
-
+                            <hr/>
+                                <h2>Nos Projets de Construction</h2>
+                                <p>Nous offrons des solutions de construction complètes, intégrant des projets résidentiels, commerciaux et industriels avec expertise et innovation.</p>
+                            <hr/>
                         </div>
                         <div className="row pt-4">
                             {

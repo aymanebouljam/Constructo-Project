@@ -19,12 +19,14 @@ const LatestProjects = () => {
 
     return (
         <>
-            <section className="section-5 bg-light">
+            <section className="section-5">
                 <div className="container py-5">
                     <div className="section-header text-center">
                         <span>Nos Projets</span>
+                        <hr/>
                         <h2>Nos Projets de Construction</h2>
                         <p>Nous proposons une gamme diversifiée de projets de construction, couvrant les secteurs résidentiel, commercial et industriel.</p>
+                        <hr/>
                     </div>
                     <div className="row pt-4">
                         {

@@ -16,12 +16,14 @@ const LatestServices = ()=>{
 
     return(
         <>
-              <section className="section-3 bg-light">
+              <section className="section-3">
                 <div className="container py-5">
-                    <div className="section-header text-center">
+                    <div className="section-header text-center" id='services'>
                         <span>Nos Services</span>
+                        <hr/>
                         <h2>Nos services de construction</h2>
                         <p>Nous offrons une gamme diversifiée de services de construction, couvrant les projets résidentiels, commerciaux et industriels.</p>
+                        <hr/>
                     </div>
                     <div className="row pt-4">
                         {

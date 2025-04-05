@@ -8,16 +8,20 @@ import { toast } from 'react-toastify'
 import React, { useState, useRef, useMemo } from 'react';
 import JoditEditor from 'jodit-react';
 
+
 const CreateProject = ({ placeholder }) => {
     const editor = useRef(null);
     const [content, setContent] = useState('');
-    const [isDisable, setIsDisable] = useState(false);
     const [imageId, setImageId] = useState(null);
+
+    
 
     const config = useMemo(() => ({
         readonly: false,
-        placeholder: placeholder || 'Content'
+        placeholder: placeholder || 'Content',
+        toolbarSticky: false,
     }), [placeholder]);
+    
 
     const {
         register,
@@ -29,11 +33,6 @@ const CreateProject = ({ placeholder }) => {
 
     const onSubmit = async (data) => {
         const newData = { ...data, "content": content, "image": imageId };
-
-        if (!imageId) {
-            toast.error("Please upload an image before submitting the form");
-            return;
-        }
 
         const res = await fetch(apiUrl + 'projects', {
             method: 'POST',
@@ -171,7 +170,7 @@ const CreateProject = ({ placeholder }) => {
                                                 type='file' className='form-control' onChange={handleFile} />
                                         </div>
                                         <div className="mb-3">
-                                            <button type='submit' className='btn btn-primary' disabled={isDisable}>Ajouter</button>
+                                            <button type='submit' className='btn btn-primary'>Ajouter</button>
                                         </div>
                                     </form>
                                 </div>

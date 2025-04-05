@@ -40,7 +40,7 @@ const Edit = ({placeholder})=>{
             }
         });
         const result = await res.json();
-        console.log(result)
+      
         setContent(result.service.content)
         setService(result.service)
         return {
@@ -60,7 +60,7 @@ const Edit = ({placeholder})=>{
     const onSubmit = async (data) => {
        
         const newData = { ...data, "content": content, "image": imageId };
-
+        console.log(newData)
 
         const res = await fetch(apiUrl + 'services/'+params.id, {
             method: 'PUT',
@@ -84,8 +84,9 @@ const Edit = ({placeholder})=>{
     const handleFile = async (e) => {
         const formData = new FormData();
         const file = e.target.files[0];
+     
         formData.append("image", file);
-
+        
         await fetch(apiUrl + 'temp-images', {
             method: 'POST',
             headers: {
@@ -97,7 +98,7 @@ const Edit = ({placeholder})=>{
             .then(response => response.json())
             .then(result => {
                 if (result.status === false) {
-                    toast.error(result.errors.image[0]);
+                    toast.error(result.data.message);
                 } else {
                     setImageId(result.data.id);
                 }

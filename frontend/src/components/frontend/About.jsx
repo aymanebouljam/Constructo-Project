@@ -4,6 +4,7 @@ import aboutVideo from '../../assets/images/about.mp4';
 import { useEffect, useState } from 'react';
 import { apiUrl, fileUrl } from '../common/http.jsx';
 import { Link } from 'react-router-dom';
+import LatestMembers from "../common/LatestMembers.jsx";
 
 function About() {
     const linkedinIcon = (
@@ -31,7 +32,7 @@ function About() {
             <Header />
             <main>
                 {/* Hero Section */}
-                <section className="section-8">
+                {/* <section className="section-8">
                     <div className="hero d-flex align-items-center">
                         <div className="container">
                             <div className="text-left">
@@ -41,63 +42,30 @@ function About() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
                 {/* About Us */}
-                <section className="section-9">
-                    <div className="container py-5">
+                <hr/>
+                <section className="section-9 bg-light">
+                    <div className="">
                         <div className="row">
-                            <div className="col-12 col-lg-6">
-                            <video width="100%" height="350" autoPlay muted loop>
+                            <div className="col-12 col-lg-6 p-0 m-0">
+                            <video width="100%" height="360" autoPlay muted loop className="d-block m-0 p-0">
                                 <source src={aboutVideo} type="video/mp4"/>
                                 Your browser does not support the video tag.
                             </video>
                             </div>
-                            <div className="col-12 col-lg-6 px-3 py-4">
+                            <div className="col-12 col-lg-6 px-5 pt-5 pb-5">
                                 <span>Qui sommes-nous ?</span>
-                                <h2>Des structures conçues pour durer toute une vie</h2>
-                                <p>La construction de structures durables demande une approche holistique qui intègre des matériaux avancés, une conception résiliente, un entretien régulier et des pratiques durables. En s'appuyant sur les connaissances historiques et en utilisant la technologie moderne.</p>
-                                <p>Pour garantir la longévité des structures, il est crucial d'incorporer une planification stratégique dès le début des projets. </p>
-
+                                <hr/>
+                                <h2>Des structures Durables</h2>
+                                <p>La construction de structures durables demande une approche holistique qui intègre des matériaux avancés, une conception résiliente, un entretien régulier et des pratiques durables. <br/>En s'appuyant sur les connaissances historiques et en utilisant la technologie moderne.</p>
                             </div>
                         </div>
                     </div>
                 </section>
+                <hr/>
                 {/* Latest Members */}
-                <section className="section-10 p-4 bg-light">
-                    <div className="container">
-                        <div className="section-header text-center">
-                            <span>Notre Équipe</span>
-                            <h2>Rencontrez Nos Derniers Membres</h2>
-                            <p>Faites connaissance avec les nouvelles recrues de notre équipe, apportant de nouvelles perspectives et une expertise à nos projets.</p>
-                        </div>
-                        <div className="row pt-4">
-                            {
-                                members && members.map(member => {
-                                    return (
-                                        <div key={member.id} className="col-12 col-md-6 col-xl-4">
-                                            <div className="item shadow">
-                                                <div className="member-image">
-                                                    <img src={fileUrl + 'uploads/members/' + member.image} className='w-100' alt={member.name} />
-                                                </div>
-                                                <div className="member-body">
-                                                    <div className="member-title">
-                                                        <h3>{member.name}</h3>
-                                                    </div>
-                                                    <div className="member-content">
-                                                        <p>{member.job_title}</p>
-                                                        <a href="#">
-                                                            {linkedinIcon}
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
-                </section>
+               <LatestMembers />
             </main>
             <Footer />
         </>

@@ -61,7 +61,7 @@ function Footer() {
                       </div>
                     </div>
                     <hr/>
-                    <div className=' text-center pt-4'>Copyright &copy; 2024 Constructo. Tous droits réservés</div>
+                    <div className=' text-center pt-4'>Copyright &copy; 2025 Constructo. Tous droits réservés</div>
               </div>
           </div>
       </footer>

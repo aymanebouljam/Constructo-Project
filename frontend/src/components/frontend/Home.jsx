@@ -48,28 +48,11 @@ import { Link } from 'react-router-dom';
                     </div>
                 </div>
             </section>
-            {/* About us section */}
-            <section className="section-2">
-            <div className="container p-5">
-                <div className="row">
-                    <div className="col-12 col-xl-6 pb-2">
-                        <img src={AboutImg} className='w-100'/>
-                    </div>
-                    <div className="col-12 col-xl-6 p-4">
-                        <span>À propos de nous</span>
-                        <h2>Des structures durables</h2>
-                        <p>Construire des structures durables nécessite une approche globale qui combine matériaux avancés, conception résiliente, entretien régulier et pratiques durables. En s'appuyant sur des connaissances historiques et en utilisant la technologie moderne.</p>
-                        <p>La conception de structures qui résistent à l'épreuve du temps implique un mélange harmonieux de matériaux de pointe, de conceptions durables, d'entretien continu et de pratiques écologiques.
-                        Pour garantir la longévité des structures, il est crucial d'incorporer une planification stratégique dès le début des projets. Cela inclut des évaluations des conditions environnementales,.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            </section>
+      
             {/* Our Services */}
             <LatestServices/>
             {/* Why choose us */}
-            <section className="section-4 ">
+            <section className="section-4 bg-light">
                 <div className="container py-5">
                     <div className="section-header text-center">
                         <span>Pourquoi nous choisir</span>
@@ -87,6 +70,7 @@ import { Link } from 'react-router-dom';
                                 <div className="card-title mt-3">
                                     <h3>Solutions de pointe</h3>
                                 </div>
+                                <hr/>
                                 <p>Les petites actions créent de grands impacts. Tout commence et se termine avec chaque employé s'engageant à adopter des pratiques de travail plus sûres quotidiennement, garantissant ainsi leur retour en sécurité.</p>
                             </div>
                         </div>
@@ -100,6 +84,7 @@ import { Link } from 'react-router-dom';
                                 <div className="card-title mt-3">
                                 <h3>Stratégies Innovantes</h3>
                                 </div>
+                                <hr/>
                                 <p>Chaque détail compte. Notre équipe met en avant des stratégies innovantes qui améliorent l'efficacité et la sécurité sur le chantier. Cet engagement garantit que chaque projet achevé selon normes plus élevées.</p>
                             </div>
                         </div>
@@ -114,6 +99,7 @@ import { Link } from 'react-router-dom';
                                 <div className="card-title mt-3">
                                     <h3>Engagement Qualité</h3>
                                 </div>
+                                <hr/>
                                 <p>L'excellence à chaque étape. Nous privilégions la qualité dans tous nos processus, de la planification à l'exécution. Cette approche garantit que nos projets surpassent les normes rigoureuses de l'industrie.</p>
                             </div>
                         </div>
@@ -123,7 +109,7 @@ import { Link } from 'react-router-dom';
             {/* Our Project */}
             <LatestProjects/>
             {/* Testimonials */}
-            <section className="section-6">
+            <section className="section-6 bg-light">
                 <div className="container py-5">
                     <div className="section-header text-center">
                         <span>Témoignages</span>
@@ -174,7 +160,7 @@ import { Link } from 'react-router-dom';
                                 <div className="card-body p-4">
                                     <div className="rating">{star}{star}{star}{star}{star}</div>
                                     <div className="content pt-4 pb-2">
-                                        <p>"Grâce à leur expertise, notre complexe touristique est désormais un incontournable. Chaque détail a été soigneusement pensé."</p>
+                                        <p>"Grâce à leur expertise, notre complexe touristique est désormais un incontournable et soigneusement pensé."</p>
                                     </div>
                                     <hr/>
                                     <div className="d-flex">
