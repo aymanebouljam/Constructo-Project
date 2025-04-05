@@ -48,3 +48,22 @@ DB_USERNAME=root
 DB_PASSWORD=your_password
 php artisan migrate --seed
 ```
+## 📸 Screenshots
+
+### 🌐 Public Interface
+**Landing Page**  
+![Landing Page](screenshots/landing-page.png)
+
+**Login Page**  
+![Login](screenshots/login.png)
+
+### 🛠 Admin Dashboard
+**Create Project**  
+![Create Project](screenshots/creating-project.png)
+
+**Manage Services**  
+![Manage Services](screenshots/managing-services.png)
+
+**Dark Mode**  
+![Dark Mode](screenshots/dark-mode.png)
+
