@@ -1,13 +1,16 @@
 import Header from "../common/Header.jsx"
 import Footer from "../common/Footer.jsx"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { apiUrl, fileUrl } from "../common/http.jsx"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { Modal, Button } from "react-bootstrap";
 
 const ProjectDetail = () => {
-    const params = useParams()
+    const params = useParams();
+    const navigate = useNavigate();
     const [project, setProject] = useState([])
-    const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useState([]);
+    const [showModal, setShowModal] = useState(true);
     
     const fetchProject = async () => {
         const res = await fetch(apiUrl + 'get-project/' + params.id, {
@@ -28,58 +31,34 @@ const ProjectDetail = () => {
         fetchAllProjects()
     }, [params.id])
 
+    const handleClose = () => {
+        setShowModal(false);
+        navigate(-1);
+    }
     return (
         <>
-            <Header />
-            <main>
-                {/* Hero Section */}
-                <section className="section-11">
-                    <div className="hero d-flex align-items-center">
-                        <div className="container">
-                            <div className="text-left">
-                                <span>Excellence. Reliability. Innovation.</span>
-                                <h1>{project.title}</h1>
+        <main>
+            <Modal show={showModal} onHide={handleClose}>
+               
+                <Modal.Body className="card shadow border-0">
+                <Modal.Header closeButton>
+                </Modal.Header>
+                        <div className="card-body p-4 ">
+                            <div className="d-flex flex-column align-items-center">
+                                <img  src={`${fileUrl}uploads/projects/${project.image}`} alt="image"  className="img-fluid"/>
                             </div>
-                        </div>
-                    </div>
-                </section>
-                {/* Project Details */}
-                <section className="section-20">
-                    <div className="container py-5">
-                        <div className="row">
-                            <div className="col-lg-3">
-                                <section className="section-19 mb-5">
-                                    <div className="card shadow border-0 sidebar">
-                                        <div className="card-body p-4">
-                                            <h3 className="my-2">Our Projects</h3>
-                                            <ul>
-                                                {
-                                                    projects && projects.map(project => {
-                                                        return (
-                                                            <li key={'project-' + project.id}>
-                                                                <Link to={'/project/' + project.id}>{project.title}</Link>
-                                                            </li>
-                                                        )
-                                                    })
-                                                }
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div className="col-lg-9">
-                                <div className="d-flex flex-column align-items-center">
-                                    <img src={`${fileUrl}uploads/projects/${project.image}`} alt="image" />
-                                </div>
+                            <hr/>
                                 <h3 className="py-5 text-center">{project.title}</h3>
-                                <div dangerouslySetInnerHTML={{ __html: project.content }} className="text-justify">
-                                </div>
+                                <hr/>
+                            <div dangerouslySetInnerHTML={{__html:project.content}} className="text-justify">
                             </div>
                         </div>
-                    </div>
-                </section>
-            </main>
-            <Footer />
+                        <Modal.Footer>
+                        </Modal.Footer>
+                </Modal.Body>
+               
+            </Modal>
+        </main>
         </>
     )
 }

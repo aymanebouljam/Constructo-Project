@@ -9,7 +9,6 @@ import React, { useState, useRef } from 'react';
 
 const EditMember = () => {
     const [member, setMember] = useState('');
-    const [isDisable, setIsDisable] = useState(false);
     const [imageId, setImageId] = useState(null);
     const params = useParams();
 
@@ -151,7 +150,7 @@ const EditMember = () => {
                                             }
                                         </div>
                                         <div className="mb-3">
-                                            <button type='submit' className='btn btn-primary' disabled={isDisable}>Modifier</button>
+                                            <button type='submit' className='btn btn-primary'>Modifier</button>
                                         </div>
                                     </form>
                                 </div>

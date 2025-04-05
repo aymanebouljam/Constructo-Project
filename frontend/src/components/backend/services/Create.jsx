@@ -5,16 +5,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { apiUrl, token } from '../../common/http.jsx'
 import { toast } from 'react-toastify'
-import { Placeholder } from 'react-bootstrap'
-import React, { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import JoditEditor from 'jodit-react';
 
 const Create = ({ placeholder }) => {
     const editor = useRef(null);
     const [content, setContent] = useState('');
-    const [isDisable, setIsDisable] = useState(false);
     const [imageId, setImageId] = useState(null);
-
+  
     const config = useMemo(() => ({
         readonly: false,
         placeholder: placeholder || 'Contenu'
@@ -29,14 +27,9 @@ const Create = ({ placeholder }) => {
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        
+     
         const newData = { ...data, "content": content, "image": imageId };
-
       
-        if (!imageId) {
-            toast.error("Veuillez télécharger une image avant de soumettre le formulaire");
-            return;
-        }
 
         const res = await fetch(apiUrl + 'services', {
             method: 'POST',
@@ -153,7 +146,7 @@ const Create = ({ placeholder }) => {
                                                 type='file' className='form-control' onChange={handleFile} />
                                         </div>
                                         <div className="mb-3">
-                                            <button type='submit' className='btn btn-primary' disabled={isDisable}>Ajouter</button>
+                                            <button type='submit' className='btn btn-primary'>Ajouter</button>
                                         </div>
                                     </form>
                                 </div>

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import { toast } from 'react-toastify';
-import axios from 'axios';
 import{apiUrl} from '../common/http.jsx'
 
 function ContactUS() {
@@ -64,11 +62,13 @@ function ContactUS() {
           </div>
         </div>
       </section>
-      <section className="section-18 py-4 bg-light">
+      <section className="section-18 p-5 bg-light">
         <div className="container">
           <div className="section-header text-center">
             <h2>Nous Contacter</h2>
-            <p>Contactez-nous en remplissant le formulaire et nous reviendrons vers vous rapidement.</p>
+            <hr/>
+              <p>Contactez-nous en remplissant le formulaire et nous reviendrons vers vous rapidement.</p>
+            <hr/>
           </div>
           <div className="row pt-4">
             <div className="col-xl-3">
@@ -87,7 +87,7 @@ function ContactUS() {
               </div>
             </div>
             <div className="col-xl-9">
-              <div className="card shadow border-0">
+              <div className="card shadow">
                 <div className="card-body p-5">
                   <form onSubmit={handleSubmit}>
                     <div className="row mt-4">

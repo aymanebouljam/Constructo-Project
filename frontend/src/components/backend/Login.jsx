@@ -28,13 +28,13 @@ function Login() {
                 token: result.token,
             };
             localStorage.setItem('userInfo', JSON.stringify(userInfo)); 
-            console.log(result);
+         
 
            
-            if (result.needs_password_change === true) {
+            if (result.needs_password_change === 1) {
                 toast.info('Veuillez changer votre mot de passe temporaire.');
                 navigate('/admin/change-password'); 
-            } else if (result.needs_password_change === false) {
+            } else if (result.needs_password_change === 0) {
                 login(userInfo);
                 navigate('/admin/Dashboard'); 
             }
@@ -50,7 +50,8 @@ function Login() {
                         <div className="card border-0 shadow">
                             <div className="card-body p-5">
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <h4 className="mb-4">Authentification d'Admin</h4>
+                                    <h4 className="mb-4 text-center">Authentification</h4>
+                                    <hr/>
                                     <div className="mb-4">
                                         <input
                                             {...register('email', {
@@ -61,9 +62,9 @@ function Login() {
                                                 },
                                             })}
                                             type="text"
-                                            className={`form-control form-control-md ${errors.email && 'is-invalid'}`}
+                                            className={`form-control form-control-lg ${errors.email && 'is-invalid'}`}
                                             name="email"
-                                            placeholder="Votre Email"
+                                            placeholder="Email"
                                         />
                                         {errors.email && <p className="fs-6 invalid-feedback">{errors.email?.message}</p>}
                                     </div>
@@ -73,14 +74,15 @@ function Login() {
                                                 required: 'Ce champ est obligatoire',
                                             })}
                                             type="password"
-                                            className={`form-control form-control-md ${errors.password && 'is-invalid'}`}
+                                            className={`form-control form-control-lg ${errors.password && 'is-invalid'}`}
                                             name="password"
-                                            placeholder="Votre Mot de passe"
+                                            placeholder="Mot de passe"
                                         />
                                         {errors.password && <p className="fs-6 invalid-feedback">{errors.password?.message}</p>}
                                     </div>
-                                    <button type="submit" className="btn btn-primary small">Connexion</button>
+                                    <button type="submit" className="btn btn-primary large mx-auto d-block">Connexion</button>
                                 </form>
+                                <hr/>
                                 <div className="mt-3 text-center">
                                     <a 
                                         href="#!" 

@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 
 const CreateMember = () => {
     const [imageId, setImageId] = useState(null);
-    const [isDisable, setIsDisable] = useState(false);
+    
 
     const {
         register,
@@ -20,11 +20,6 @@ const CreateMember = () => {
 
     const onSubmit = async (data) => {
         const newData = { ...data, 'image_id': imageId };
-
-        if (!imageId) {
-            toast.error('Veuillez télécharger une image avant de soumettre le formulaire.');
-            return;
-        }
 
         const res = await fetch(apiUrl + 'members', {
             method: 'POST',
@@ -129,7 +124,7 @@ const CreateMember = () => {
                                                 type='file' className='form-control' onChange={handleFile} />
                                         </div>
                                         <div className='mb-3'>
-                                            <button type='submit' className='btn btn-primary' disabled={isDisable}>Ajouter</button>
+                                            <button type='submit' className='btn btn-primary' >Ajouter</button>
                                         </div>
                                     </form>
                                 </div>
