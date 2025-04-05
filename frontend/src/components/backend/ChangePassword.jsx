@@ -51,30 +51,30 @@ function ChangePassword() {
                                     <h4 className="mb-4">Change Your Password</h4>
 
                                     <div className="mb-4">
-                                        <label htmlFor="old_password" className="form-label">Old Password</label>
+                                        <label htmlFor="old_password" className="form-label">Ancien</label>
                                         <input
                                             {...register('old_password', { required: "Old password is required" })}
                                             type="password"
                                             className={`form-control form-control-md ${errors.old_password && 'is-invalid'}`}
                                             name="old_password"
-                                            placeholder="Your Old Password"
+                                            placeholder="Votre ancien mot de passe"
                                         />
                                         {errors.old_password && <p className="fs-6 invalid-feedback">{errors.old_password.message}</p>}
                                     </div>
 
                                     <div className="mb-4">
-                                        <label htmlFor="new_password" className="form-label">New Password</label>
+                                        <label htmlFor="new_password" className="form-label">Nouveau</label>
                                         <input
                                             {...register('new_password', { required: "New password is required", minLength: { value: 6, message: "Password must be at least 6 characters" } })}
                                             type="password"
                                             className={`form-control form-control-md ${errors.new_password && 'is-invalid'}`}
                                             name="new_password"
-                                            placeholder="Your New Password"
+                                            placeholder="Votre nouveau mot de passe"
                                         />
                                         {errors.new_password && <p className="fs-6 invalid-feedback">{errors.new_password.message}</p>}
                                     </div>
 
-                                    <button type="submit" className="btn btn-primary">Change Password</button>
+                                    <button type="submit" className="btn btn-primary">Valider</button>
                                 </form>
                             </div>
                         </div>
