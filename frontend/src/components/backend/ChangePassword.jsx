@@ -48,7 +48,7 @@ function ChangePassword() {
                         <div className="card border-0 shadow">
                             <div className="card-body p-5">
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <h4 className="mb-4">Change Your Password</h4>
+                                    <h4 className="mb-4">Changer le Mot de Passe</h4>
 
                                     <div className="mb-4">
                                         <label htmlFor="old_password" className="form-label">Ancien</label>

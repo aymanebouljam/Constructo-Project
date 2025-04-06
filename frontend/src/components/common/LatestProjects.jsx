@@ -46,7 +46,7 @@ const LatestProjects = () => {
                                                         {project.short_desc}
                                                     </p>
                                                 </div>
-                                                <Link to={'/project/' + project.id} className="btn btn-primary small">Read More</Link>
+                                                <Link to={'/project/' + project.id} className="btn btn-primary small">Lire plus</Link>
                                             </div>
                                         </div>
                                     </div>
