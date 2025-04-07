@@ -49,21 +49,21 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('dashboard', [DashboardController::class, 'index']);
     Route::post('logout', [AuthenticationController::class, 'logout']);
 
-    // Service Routes
+    // Services Routes
     Route::post('services', [ServiceController::class, 'store']);
     Route::get('services', [ServiceController::class, 'index']);
     Route::put('services/{id}', [ServiceController::class, 'update']);
     Route::get('services/{id}', [ServiceController::class, 'show']);
     Route::delete('services/{id}', [ServiceController::class, 'destroy']);
 
-    // Project Routes
+    // Projects Routes
     Route::post('projects', [AdminProjectController::class, 'store']);
     Route::get('projects', [AdminProjectController::class, 'index']);
     Route::put('projects/{id}', [AdminProjectController::class, 'update']);
     Route::get('projects/{id}', [AdminProjectController::class, 'show']);
     Route::delete('projects/{id}', [AdminProjectController::class, 'destroy']);
 
-    // Member Routes
+    // Members Routes
     Route::post('members', [AdminMemberController::class, 'store']);
     Route::get('members', [AdminMemberController::class, 'index']);
     Route::put('members/{id}', [AdminMemberController::class, 'update']);
